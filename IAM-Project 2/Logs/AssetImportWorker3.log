@@ -1,0 +1,1980 @@
+Using pre-set license
+Built from '2021.1/staging' branch; Version is '2021.1.7f1 (d91830b65d9b) revision 14227504'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19043.2130; Version 2009; 64bit' Language: 'de' Physical Memory: 8151 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+D:\Verschiedenes\Unity\2021-1-7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+D:/Verschiedenes/HSA/IAM-Projekt-2/iam-projekt-2/IAM-Project 2
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+63514
+Successfully changed project path to: D:/Verschiedenes/HSA/IAM-Projekt-2/iam-projekt-2/IAM-Project 2
+D:/Verschiedenes/HSA/IAM-Projekt-2/iam-projekt-2/IAM-Project 2
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 133.56 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.7f1 (d91830b65d9b)
+[Subsystems] Discovering subsystems at path D:/Verschiedenes/Unity/2021-1-7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Verschiedenes/HSA/IAM-Projekt-2/iam-projekt-2/IAM-Project 2/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+d3d12: loaded!
+Direct3D:
+    Version:         Direct3D 12 [level 12.1]
+    Renderer:        NVIDIA GeForce GTX 1070 (ID=0x1b81)
+    Vendor:          NVIDIA
+    VRAM:            8088 MB
+    App VRAM Budget: 7320 MB
+    Driver:          30.0.15.1215
+d3d12: Profiler is enabled, but stable power state is not. GPU timing errors are expected.
+
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Initialize mono
+Mono path[0] = 'D:/Verschiedenes/Unity/2021-1-7f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Verschiedenes/Unity/2021-1-7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Verschiedenes/Unity/2021-1-7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56288
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Verschiedenes/Unity/2021-1-7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001077 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 138.53 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.278 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002459 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 129.07 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.755 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
+Refreshing native plugins compatible for Editor in 0.98 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4023 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 156.7 MB.
+System memory in use after: 156.9 MB.
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 4481.
+Total: 5.025400 ms (FindLiveObjects: 0.302400 ms CreateObjectMapping: 0.203300 ms MarkObjects: 4.438300 ms  DeleteObjects: 0.078600 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Game Buffs/Free Realistic Nature Textures
+  artifactKey: Guid(9d262ff6eb927194b8c5ff2c26e09bd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures using Guid(9d262ff6eb927194b8c5ff2c26e09bd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e64ae3c0201f4d47b0c42d3177905442') in 0.010903 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000295 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures
+  artifactKey: Guid(6689e93fc22fd92489cfb53da6d34e5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures using Guid(6689e93fc22fd92489cfb53da6d34e5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dd0d356fdea39d1a7aa5378f0538c5e') in 0.006608 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 24.963082 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Demo/Demo
+  artifactKey: Guid(aa13f7a5a28ba634d8f111fe9f05078d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Demo/Demo using Guid(aa13f7a5a28ba634d8f111fe9f05078d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd344234dec34692bbbe16e88b91c0529') in 0.010397 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.133980 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Demo/Demo/LightingData.asset
+  artifactKey: Guid(47c2c8329496aeb4085df915b3559e6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Demo/Demo/LightingData.asset using Guid(47c2c8329496aeb4085df915b3559e6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '010fbb520ef029924f65b8d795443a26') in 0.074243 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000305 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Demo/Demo/ReflectionProbe-0.exr
+  artifactKey: Guid(ac79601f5e2145548882c87ffe1835a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Demo/Demo/ReflectionProbe-0.exr using Guid(ac79601f5e2145548882c87ffe1835a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '289aefa7badf2e48cc0f388d2793bba8') in 0.378604 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.191006 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8
+  artifactKey: Guid(bf44000f6d4ecdc4bbdb77a64a1c8468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8 using Guid(bf44000f6d4ecdc4bbdb77a64a1c8468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa803e0c8459b9a4b073a785fbe8d78') in 0.010770 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Albedo.png
+  artifactKey: Guid(7debfec1acc74a047a4ffac041ec0c7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Albedo.png using Guid(7debfec1acc74a047a4ffac041ec0c7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7beb155ca2c9668dfd59cc5d18f174eb') in 0.108416 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000252 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8.terrainlayer
+  artifactKey: Guid(9ff253c9775fa8f4091fc1989cbca4d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8.terrainlayer using Guid(9ff253c9775fa8f4091fc1989cbca4d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 6.111 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.198 ms.
+ -> (artifact id: 'ca260afba2530cb2829134b0268d5d3f') in 0.102266 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Smoothness.png
+  artifactKey: Guid(163cef9a3aa7fa049ace53d19fcbc313) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Smoothness.png using Guid(163cef9a3aa7fa049ace53d19fcbc313) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5c0a01b6f3352278fc097db6b63a28e') in 0.028698 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8.mat
+  artifactKey: Guid(50308841e2672724a9d8b0dd07ad97a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8.mat using Guid(50308841e2672724a9d8b0dd07ad97a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 3.596 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.657 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.650 ms.
+ -> (artifact id: '0f48afd73781a69960c0d0dced54ae24') in 0.399377 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.001799 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Normal.png
+  artifactKey: Guid(d35f1bcda4d861441b76bbb7198aa606) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Normal.png using Guid(d35f1bcda4d861441b76bbb7198aa606) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.878 ms.
+ -> (artifact id: 'd85c17cc82dfdff88fa93bb1291aea50') in 0.073372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000270 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_AO.png
+  artifactKey: Guid(3c9534f463dd781438733eec950cbdcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_AO.png using Guid(3c9534f463dd781438733eec950cbdcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4413b353fb9e755bb679ee4713117de2') in 0.036872 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Height.png
+  artifactKey: Guid(422325a46f9c8c443bd139c9b8ad0154) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Height.png using Guid(422325a46f9c8c443bd139c9b8ad0154) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af028fbbecc5d6f836949260b8d1d28e') in 0.030601 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000326 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Mask.png
+  artifactKey: Guid(b4e5dbcf914a0a847939030d4f2134f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Beach_Sand_Wet_8/Beach_Sand_Wet_8_Mask.png using Guid(b4e5dbcf914a0a847939030d4f2134f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.427 ms.
+ -> (artifact id: 'cfd6bf70b27b9f926ffabbc3bf6cd4ca') in 0.046101 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 19.731769 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4.mat
+  artifactKey: Guid(e0108a6667f03424c9606b2b4fb06d72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4.mat using Guid(e0108a6667f03424c9606b2b4fb06d72) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 3.776 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 7.377 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 6.617 ms.
+ -> (artifact id: '2e1f68b6a492e7b978efe0ee1dd874a6') in 0.086509 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000340 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Height.png
+  artifactKey: Guid(a58a4d000fdb8624b8c23ce2ce493ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Height.png using Guid(a58a4d000fdb8624b8c23ce2ce493ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e6ffe962f40524951b99cea302e4b0c') in 0.030829 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000353 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Smoothness.png
+  artifactKey: Guid(a5b42b6926a5c9d41bd217f7a0116e7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Smoothness.png using Guid(a5b42b6926a5c9d41bd217f7a0116e7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22e68c03759b0ce7095370f0869e79e5') in 0.045786 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Mask.png
+  artifactKey: Guid(b3f416e6b4409c84a9afa99a42a04958) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Mask.png using Guid(b3f416e6b4409c84a9afa99a42a04958) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 6.108 ms.
+ -> (artifact id: 'bd729fb26a851905443c31705d419cb8') in 0.058964 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000259 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Albedo.png
+  artifactKey: Guid(257a5eaaf46a5bb4b92e552b04ed7a59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Albedo.png using Guid(257a5eaaf46a5bb4b92e552b04ed7a59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c9f5ad37d6403d9bd61b9399f0518d3') in 0.028325 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000274 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Normal.png
+  artifactKey: Guid(a4e057a14107f4f4999cf31810f327e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_Normal.png using Guid(a4e057a14107f4f4999cf31810f327e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.474 ms.
+ -> (artifact id: 'c1af4189147ad3ea8a8b424ace3a1b18') in 0.046176 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000277 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_AO.png
+  artifactKey: Guid(b683967af0c3ea84ba42800e563cdedf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4_AO.png using Guid(b683967af0c3ea84ba42800e563cdedf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efe92b40de96817a1ec11d142b136d4c') in 0.038172 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4.terrainlayer
+  artifactKey: Guid(36f75e21676564d4bb86cd3ed7117598) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4/Cliff_4.terrainlayer using Guid(36f75e21676564d4bb86cd3ed7117598) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.392 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.124 ms.
+ -> (artifact id: '2541e02b2f95d55c000b4bc08ef5ceb9') in 0.058202 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.421635 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1.mat
+  artifactKey: Guid(8ae3c4f4e65069545baa57161897482e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1.mat using Guid(8ae3c4f4e65069545baa57161897482e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.153 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.595 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.685 ms.
+ -> (artifact id: '305ce33d8742792f4c2d5e4c6b6082b7') in 0.112212 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000397 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Mask.png
+  artifactKey: Guid(e0e7b6f6bc9772648bd6a15d5f1fa8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Mask.png using Guid(e0e7b6f6bc9772648bd6a15d5f1fa8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.862 ms.
+ -> (artifact id: '357ba21a398b1d98f76c711b5c3e32bd') in 0.042529 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000266 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_AO.png
+  artifactKey: Guid(a575db869b942ed4d8d1f8a4d0802818) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_AO.png using Guid(a575db869b942ed4d8d1f8a4d0802818) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b712ee981c6c03738a44a9e44ea383b9') in 0.028834 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Smoothness.png
+  artifactKey: Guid(fc20b3a8aa45fd343834b21d33e82db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Smoothness.png using Guid(fc20b3a8aa45fd343834b21d33e82db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b00f07237d77262eea561d937a3e6b6') in 0.028362 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Normal.png
+  artifactKey: Guid(99c9c5884de5cf14ea282374f8c76e7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Normal.png using Guid(99c9c5884de5cf14ea282374f8c76e7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.894 ms.
+ -> (artifact id: 'cfbe7cd67dfb1608a5fb911144d18d8f') in 0.034870 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000325 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1.terrainlayer
+  artifactKey: Guid(d938744848681c04bab70a6ca6a05ff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1.terrainlayer using Guid(d938744848681c04bab70a6ca6a05ff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.518 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.570 ms.
+ -> (artifact id: 'cd27b858d1d2885a19378b3e02d36fc2') in 0.046841 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Albedo.png
+  artifactKey: Guid(eb061a95f984fe249885b91ac7bd1a53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Albedo.png using Guid(eb061a95f984fe249885b91ac7bd1a53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bc57a28ab8a1a51620928ff2ae5eefc') in 0.026985 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Height.png
+  artifactKey: Guid(91fc9cce5373b354fbf8fc18cf0f2709) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Dirt_1/Cracked_Dirt_1_Height.png using Guid(91fc9cce5373b354fbf8fc18cf0f2709) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5dcbf6167b06f574313e703103182cb0') in 0.029475 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.761790 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3.mat
+  artifactKey: Guid(f6d7f84e1483d374bbda915e9eb7d0fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3.mat using Guid(f6d7f84e1483d374bbda915e9eb7d0fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.313 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.739 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 2.551 ms.
+ -> (artifact id: '6967d5992d8e0e510846a7df255c9d3e') in 0.077374 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000567 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3.terrainlayer
+  artifactKey: Guid(340e623571ae28543ad860a5102345a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3.terrainlayer using Guid(340e623571ae28543ad860a5102345a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.774 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.840 ms.
+ -> (artifact id: '76a7bce703425fa286a7e81803c7a5c7') in 0.050760 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000314 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_AO.png
+  artifactKey: Guid(1c9f1c8d5cf14044186d30a07ab53647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_AO.png using Guid(1c9f1c8d5cf14044186d30a07ab53647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16020297faa31f870e5ccba63e90becb') in 0.027403 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000340 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Height.png
+  artifactKey: Guid(05ce69b6591ca3f408f4988ac3181aa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Height.png using Guid(05ce69b6591ca3f408f4988ac3181aa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8fd0a10468c15b646801da68bc8d39a') in 0.029868 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.002693 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Normal.png
+  artifactKey: Guid(ee0c9509b59a50a4382117fc9c7622b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Normal.png using Guid(ee0c9509b59a50a4382117fc9c7622b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.541 ms.
+ -> (artifact id: '49033d136c80341c0e9a64cdc6b3ef04') in 0.037124 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000288 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Mask.png
+  artifactKey: Guid(ca12194ba46d3bf479a2882764851f19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Mask.png using Guid(ca12194ba46d3bf479a2882764851f19) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 4.539 ms.
+ -> (artifact id: '64ceafbcb3ae82f23175af3c6637b98a') in 0.039574 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Smoothness.png
+  artifactKey: Guid(8d4916ec0ee2ba74886cb153dd8324e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Smoothness.png using Guid(8d4916ec0ee2ba74886cb153dd8324e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b65912ff532f23bdaa683272df9bc74a') in 0.026372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Albedo.png
+  artifactKey: Guid(e1f23163ad3baff448a853ce81365b73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cracked_Mud_Wet_3/Cracked_Mud_Wet_3_Albedo.png using Guid(e1f23163ad3baff448a853ce81365b73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ae5d4e77a0b1368ebfb60b3a7fc7bc0') in 0.030357 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.290625 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1.mat
+  artifactKey: Guid(743586f1afe9cfa418b975fecc9f19e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1.mat using Guid(743586f1afe9cfa418b975fecc9f19e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.301 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.694 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.523 ms.
+ -> (artifact id: 'feca296940fe3108c5ff8af6469190af') in 0.077289 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000299 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1.terrainlayer
+  artifactKey: Guid(b65f8b821a9763f4fbcc67deb04660a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1.terrainlayer using Guid(b65f8b821a9763f4fbcc67deb04660a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.618 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.648 ms.
+ -> (artifact id: 'be8fecfcfeacc4812e22588d9e25e93e') in 0.060899 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Height.png
+  artifactKey: Guid(6a8ed739a1922c54681e712f580570ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Height.png using Guid(6a8ed739a1922c54681e712f580570ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2cf0aaa963aa20a9de0b010e64fe6a93') in 0.030360 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000254 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Smoothness.png
+  artifactKey: Guid(7dd184662bea24441b23ac2603b20455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Smoothness.png using Guid(7dd184662bea24441b23ac2603b20455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4510cf99b907f4cbf800004b74e7034c') in 0.027201 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Mask.png
+  artifactKey: Guid(2923f0d5b32fc8e4493c1b19b9d73c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Mask.png using Guid(2923f0d5b32fc8e4493c1b19b9d73c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.502 ms.
+ -> (artifact id: 'f6b2b3ea0789fb385fb90083826a3c05') in 0.044909 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.001721 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Normal.png
+  artifactKey: Guid(b6a1656741e5c354288898b3ffe42ee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Normal.png using Guid(b6a1656741e5c354288898b3ffe42ee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.567 ms.
+ -> (artifact id: 'cd43260b9bb110a84edef5825778d278') in 0.043609 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000214 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Albedo.png
+  artifactKey: Guid(5b7a82909649f6f43b887aa6a6a49bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_Albedo.png using Guid(5b7a82909649f6f43b887aa6a6a49bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75f82e914fcfa62d3466b7b8e89342fe') in 0.037907 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_AO.png
+  artifactKey: Guid(9f75f071df1086b4783dcf1725333827) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Dirt_1/Dirt_1_AO.png using Guid(9f75f071df1086b4783dcf1725333827) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5805ab1ed53a82cded3487d9e25ab1fd') in 0.025474 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.513547 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1.mat
+  artifactKey: Guid(132776baba9a35b4a8fbb0e217d5e6a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1.mat using Guid(132776baba9a35b4a8fbb0e217d5e6a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.456 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.662 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.727 ms.
+ -> (artifact id: '495ae8878b629033503d973dd4d0631e') in 0.054362 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000307 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Normal.png
+  artifactKey: Guid(800321d9cf1acfa4f84f0f1efa8f6ad6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Normal.png using Guid(800321d9cf1acfa4f84f0f1efa8f6ad6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.702 ms.
+ -> (artifact id: '04d9461d5c9db5ee4fa0ef8082af795d') in 0.030338 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000315 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Mask.png
+  artifactKey: Guid(07f6f9952f2cc1f4b92f82823b3323b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Mask.png using Guid(07f6f9952f2cc1f4b92f82823b3323b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.735 ms.
+ -> (artifact id: 'f6f37242817a7f0598f6c784cb98862c') in 0.038334 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1.terrainlayer
+  artifactKey: Guid(36f99dce7703f0444a89fe4d6727acde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1.terrainlayer using Guid(36f99dce7703f0444a89fe4d6727acde) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 1.662 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.828 ms.
+ -> (artifact id: '084ed0d1f1ff4c2bd5ff0ae46671ad85') in 0.037644 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Height.png
+  artifactKey: Guid(6e4345535dbb2c34da3635646223c9f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Height.png using Guid(6e4345535dbb2c34da3635646223c9f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c0195fb9e0a136d21d2563ff38b62f1') in 0.020415 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000423 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Smoothness.png
+  artifactKey: Guid(9dc2e5f76dab9c049af9e05c69c044dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Smoothness.png using Guid(9dc2e5f76dab9c049af9e05c69c044dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8bec99a1c7ec6b6008ce741060b33a0') in 0.020077 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_AO.png
+  artifactKey: Guid(16e17360e75456f49bc28c19def76f4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_AO.png using Guid(16e17360e75456f49bc28c19def76f4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65c42b443fc059677da8aa13670dc1f5') in 0.019616 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000299 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Albedo.png
+  artifactKey: Guid(7893e0cc61a66854094cf3ab5e0d0455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1_Albedo.png using Guid(7893e0cc61a66854094cf3ab5e0d0455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99650cffc876e43a46d75ead906528af') in 0.021204 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1975.805640 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4
+  artifactKey: Guid(3ad97589c1b5aa3489b64c553d50d0e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Cliff_4 using Guid(3ad97589c1b5aa3489b64c553d50d0e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb731f2d68c0fc44f48a3e666af79b76') in 0.004353 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002120 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+d3d12: upload buffer was full! Waited for COPY queue for 3.577 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.732 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.798 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.888 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.682 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.233 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.313 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.934 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.775 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.687 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.786 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.651 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.778 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.307 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.345 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 0.378 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.219 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 2.091 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.241 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 2.035 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.252 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 2.083 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.300 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.852 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.155 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 2.071 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.233 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.215 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.790 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.688 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.780 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.253 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.633 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.822 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.786 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.218 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 2.162 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.301 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.337 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.704 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.849 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.257 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.315 ms.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.875 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3996 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5126.
+Total: 6.120200 ms (FindLiveObjects: 0.352700 ms CreateObjectMapping: 2.526800 ms MarkObjects: 3.141100 ms  DeleteObjects: 0.098100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002123 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.988 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5130.
+Total: 3.132700 ms (FindLiveObjects: 0.340300 ms CreateObjectMapping: 0.208600 ms MarkObjects: 2.489200 ms  DeleteObjects: 0.093800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002355 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.016 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5134.
+Total: 2.843300 ms (FindLiveObjects: 0.359100 ms CreateObjectMapping: 0.230800 ms MarkObjects: 2.196600 ms  DeleteObjects: 0.055800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002164 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.100 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5138.
+Total: 3.327400 ms (FindLiveObjects: 0.353100 ms CreateObjectMapping: 0.208500 ms MarkObjects: 2.703800 ms  DeleteObjects: 0.060600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002412 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.009 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5142.
+Total: 2.979300 ms (FindLiveObjects: 0.356100 ms CreateObjectMapping: 0.212700 ms MarkObjects: 2.362000 ms  DeleteObjects: 0.047700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002563 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.107 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5146.
+Total: 7.250600 ms (FindLiveObjects: 0.489300 ms CreateObjectMapping: 0.350500 ms MarkObjects: 6.318200 ms  DeleteObjects: 0.091200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002153 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.115 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5150.
+Total: 2.855800 ms (FindLiveObjects: 0.355800 ms CreateObjectMapping: 0.215500 ms MarkObjects: 2.223600 ms  DeleteObjects: 0.059600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002408 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.075 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.92 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5154.
+Total: 3.191600 ms (FindLiveObjects: 0.385700 ms CreateObjectMapping: 0.289500 ms MarkObjects: 2.462400 ms  DeleteObjects: 0.053100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002176 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.009 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5158.
+Total: 3.281900 ms (FindLiveObjects: 0.377000 ms CreateObjectMapping: 0.251700 ms MarkObjects: 2.569500 ms  DeleteObjects: 0.082800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.037700 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.565 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5162.
+Total: 3.442600 ms (FindLiveObjects: 0.393800 ms CreateObjectMapping: 0.262300 ms MarkObjects: 2.725200 ms  DeleteObjects: 0.060100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002252 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.062 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5166.
+Total: 3.667800 ms (FindLiveObjects: 0.380500 ms CreateObjectMapping: 0.270000 ms MarkObjects: 2.966600 ms  DeleteObjects: 0.049400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002315 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.78 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.075 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5170.
+Total: 3.347800 ms (FindLiveObjects: 0.507400 ms CreateObjectMapping: 0.414600 ms MarkObjects: 2.372500 ms  DeleteObjects: 0.052200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002815 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.084 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5174.
+Total: 3.005100 ms (FindLiveObjects: 0.370100 ms CreateObjectMapping: 0.221900 ms MarkObjects: 2.356100 ms  DeleteObjects: 0.056000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002203 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.056 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5178.
+Total: 3.200300 ms (FindLiveObjects: 0.507200 ms CreateObjectMapping: 0.373300 ms MarkObjects: 2.274300 ms  DeleteObjects: 0.044600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002857 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.011 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5182.
+Total: 3.443900 ms (FindLiveObjects: 0.388900 ms CreateObjectMapping: 0.243400 ms MarkObjects: 2.724000 ms  DeleteObjects: 0.086800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002750 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.086 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5186.
+Total: 3.171600 ms (FindLiveObjects: 0.404100 ms CreateObjectMapping: 0.261100 ms MarkObjects: 2.447400 ms  DeleteObjects: 0.058100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002432 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.87 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.075 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5190.
+Total: 2.841400 ms (FindLiveObjects: 0.382700 ms CreateObjectMapping: 0.228100 ms MarkObjects: 2.173600 ms  DeleteObjects: 0.056100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002271 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.99 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.074 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5194.
+Total: 2.866100 ms (FindLiveObjects: 0.391600 ms CreateObjectMapping: 0.255300 ms MarkObjects: 2.144500 ms  DeleteObjects: 0.073700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002242 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.86 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.055 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.75 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5198.
+Total: 3.116600 ms (FindLiveObjects: 0.411900 ms CreateObjectMapping: 0.247900 ms MarkObjects: 2.406200 ms  DeleteObjects: 0.049600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002720 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.186 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.83 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5202.
+Total: 3.988400 ms (FindLiveObjects: 0.408300 ms CreateObjectMapping: 0.324900 ms MarkObjects: 3.197000 ms  DeleteObjects: 0.056900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002497 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.078 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5206.
+Total: 3.967300 ms (FindLiveObjects: 0.504000 ms CreateObjectMapping: 0.349600 ms MarkObjects: 3.049200 ms  DeleteObjects: 0.063300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002187 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.248 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5210.
+Total: 3.864700 ms (FindLiveObjects: 0.456300 ms CreateObjectMapping: 0.486000 ms MarkObjects: 2.864500 ms  DeleteObjects: 0.056400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002239 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.97 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.242 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5214.
+Total: 4.215800 ms (FindLiveObjects: 0.558600 ms CreateObjectMapping: 0.428800 ms MarkObjects: 3.087900 ms  DeleteObjects: 0.139000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002144 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.234 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5218.
+Total: 4.163600 ms (FindLiveObjects: 0.784200 ms CreateObjectMapping: 0.460300 ms MarkObjects: 2.866700 ms  DeleteObjects: 0.051300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002225 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.209 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.85 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5222.
+Total: 3.697100 ms (FindLiveObjects: 0.436300 ms CreateObjectMapping: 0.498200 ms MarkObjects: 2.695200 ms  DeleteObjects: 0.065800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002353 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.78 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.173 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5226.
+Total: 3.650700 ms (FindLiveObjects: 0.509300 ms CreateObjectMapping: 0.559800 ms MarkObjects: 2.535500 ms  DeleteObjects: 0.044800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002194 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.90 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.184 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5230.
+Total: 4.061100 ms (FindLiveObjects: 0.478000 ms CreateObjectMapping: 0.608900 ms MarkObjects: 2.924200 ms  DeleteObjects: 0.048700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002266 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.183 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5234.
+Total: 3.850500 ms (FindLiveObjects: 0.468300 ms CreateObjectMapping: 0.340400 ms MarkObjects: 2.988600 ms  DeleteObjects: 0.051700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002627 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.218 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5238.
+Total: 3.533200 ms (FindLiveObjects: 0.440400 ms CreateObjectMapping: 0.272900 ms MarkObjects: 2.765700 ms  DeleteObjects: 0.053000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002142 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.004 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.83 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5242.
+Total: 3.585700 ms (FindLiveObjects: 0.563200 ms CreateObjectMapping: 0.399100 ms MarkObjects: 2.538900 ms  DeleteObjects: 0.083500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002171 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.92 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.055 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5246.
+Total: 4.001700 ms (FindLiveObjects: 0.798600 ms CreateObjectMapping: 0.444900 ms MarkObjects: 2.704800 ms  DeleteObjects: 0.051700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002171 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.109 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5250.
+Total: 3.541700 ms (FindLiveObjects: 0.439000 ms CreateObjectMapping: 0.293500 ms MarkObjects: 2.747100 ms  DeleteObjects: 0.060700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002244 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.166 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5254.
+Total: 3.261200 ms (FindLiveObjects: 0.393000 ms CreateObjectMapping: 0.315700 ms MarkObjects: 2.471500 ms  DeleteObjects: 0.080000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002247 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.052 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5258.
+Total: 4.529400 ms (FindLiveObjects: 0.589600 ms CreateObjectMapping: 0.492100 ms MarkObjects: 3.392500 ms  DeleteObjects: 0.053800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002159 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.049 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.91 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5262.
+Total: 3.435800 ms (FindLiveObjects: 0.479200 ms CreateObjectMapping: 0.261500 ms MarkObjects: 2.649100 ms  DeleteObjects: 0.045100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002149 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.053 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5266.
+Total: 4.099900 ms (FindLiveObjects: 0.571300 ms CreateObjectMapping: 0.548100 ms MarkObjects: 2.928400 ms  DeleteObjects: 0.050800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002393 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.231 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5270.
+Total: 3.787000 ms (FindLiveObjects: 0.430000 ms CreateObjectMapping: 0.455300 ms MarkObjects: 2.835400 ms  DeleteObjects: 0.065000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002295 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.92 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.269 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.78 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5274.
+Total: 4.065200 ms (FindLiveObjects: 0.582800 ms CreateObjectMapping: 0.562700 ms MarkObjects: 2.868500 ms  DeleteObjects: 0.050000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002475 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.067 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5278.
+Total: 3.054400 ms (FindLiveObjects: 0.423300 ms CreateObjectMapping: 0.276100 ms MarkObjects: 2.308000 ms  DeleteObjects: 0.046100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002130 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.032 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5282.
+Total: 3.222000 ms (FindLiveObjects: 0.400500 ms CreateObjectMapping: 0.270500 ms MarkObjects: 2.434700 ms  DeleteObjects: 0.115400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002230 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.032 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5286.
+Total: 3.064900 ms (FindLiveObjects: 0.428000 ms CreateObjectMapping: 0.236200 ms MarkObjects: 2.320100 ms  DeleteObjects: 0.079800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002520 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.116 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3959 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.67 GB.
+System memory in use after: 0.67 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5290.
+Total: 3.780100 ms (FindLiveObjects: 0.521800 ms CreateObjectMapping: 0.480700 ms MarkObjects: 2.716800 ms  DeleteObjects: 0.059400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 14408.238590 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14.mat
+  artifactKey: Guid(240bced8fbb7ea749a03450b68180bb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14.mat using Guid(240bced8fbb7ea749a03450b68180bb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.337 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.179 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.659 ms.
+ -> (artifact id: 'c3f57366dd23b755e0631c3d21646391') in 0.693508 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14.terrainlayer
+  artifactKey: Guid(6fd7e6d09c252384d9cc9af916b9b1fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14.terrainlayer using Guid(6fd7e6d09c252384d9cc9af916b9b1fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.974 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.140 ms.
+ -> (artifact id: '8ff62dca851259f8e6a44552dc6ea0e3') in 0.077440 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_AO.png
+  artifactKey: Guid(16e6667b474006a4a8dd84b58dea3f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_AO.png using Guid(16e6667b474006a4a8dd84b58dea3f08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f784cd9d47bc6bb2fbd8e91c3d09685') in 0.060330 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000448 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Normal.png
+  artifactKey: Guid(dd3884e6f008b994ca35748e5e1e4a6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Normal.png using Guid(dd3884e6f008b994ca35748e5e1e4a6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.384 ms.
+ -> (artifact id: 'cf820afac8a63c0f915b5de54cd0ef9c') in 0.044372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000270 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Mask.png
+  artifactKey: Guid(d58cfe2a9816ff049a64530e72a8b6d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Mask.png using Guid(d58cfe2a9816ff049a64530e72a8b6d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.289 ms.
+ -> (artifact id: 'c008af9d857a55c5776380a67444cd08') in 0.228880 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Albedo.png
+  artifactKey: Guid(9542bdcb083dc934986321cb93d5fca1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Albedo.png using Guid(9542bdcb083dc934986321cb93d5fca1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f7160e4a819c56dce5fe2e5aca34860') in 0.026637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000305 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Smoothness.png
+  artifactKey: Guid(5bbd0b6588a7b5147aeada02c6296b15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Smoothness.png using Guid(5bbd0b6588a7b5147aeada02c6296b15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b308288f52c9e07c1d7145d5f6aee55') in 0.147994 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000312 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Height.png
+  artifactKey: Guid(d50dd44988da8ca4b8ce6c77db1abd4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Ice_14/Ice_14_Height.png using Guid(d50dd44988da8ca4b8ce6c77db1abd4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7eb8c57f1acebfa3a14850c7148d2762') in 0.026051 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.808837 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14.mat
+  artifactKey: Guid(3313780ac6d8cc24798b3a4d70b1ac7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14.mat using Guid(3313780ac6d8cc24798b3a4d70b1ac7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 3.622 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 7.289 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.891 ms.
+ -> (artifact id: 'b716bc6eb0d370de43d45faaa6225494') in 0.591501 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000317 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Mask.png
+  artifactKey: Guid(7e2393c07d38f1c4e92da7e037aaec11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Mask.png using Guid(7e2393c07d38f1c4e92da7e037aaec11) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.144 ms.
+ -> (artifact id: '83a7a73e7eda2936581e31c3af092391') in 0.216080 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000309 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Normal.png
+  artifactKey: Guid(908ea9c5b485a744eb967f2e8a02b0e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Normal.png using Guid(908ea9c5b485a744eb967f2e8a02b0e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.186 ms.
+ -> (artifact id: '1fbaaac2b232d8160c68d68398d0ebd3') in 0.040469 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000505 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Albedo.png
+  artifactKey: Guid(d165951a2f47af2438866d3ffd303f41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Albedo.png using Guid(d165951a2f47af2438866d3ffd303f41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '317d30287b841aa6fc768ec207f70d1b') in 0.033922 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_AO.png
+  artifactKey: Guid(bbea09afb1faac04bb42721339a31a09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_AO.png using Guid(bbea09afb1faac04bb42721339a31a09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fe1197e8d57a38e91b36191440b4344') in 0.047701 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000266 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Smoothness.png
+  artifactKey: Guid(2a01b5eed4a598f4784cf9720d0046e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Smoothness.png using Guid(2a01b5eed4a598f4784cf9720d0046e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b0cee4952b4da053d8743cc17026a2f') in 0.143608 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000340 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14.terrainlayer
+  artifactKey: Guid(680b394328f4f6342aec5a38cac38b44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14.terrainlayer using Guid(680b394328f4f6342aec5a38cac38b44) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.658 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.149 ms.
+ -> (artifact id: '76997eeba4c00bfbd46c25e3587f3059') in 0.071115 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000232 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Height.png
+  artifactKey: Guid(4d1c13c11189d5e40a3035f5f17afa6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rock_14/Rock_14_Height.png using Guid(4d1c13c11189d5e40a3035f5f17afa6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88930631116d4f9c1e0c7a9f868194c3') in 0.024693 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.469183 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7.mat
+  artifactKey: Guid(04befbd38724ebe4c8571058563e9fad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7.mat using Guid(04befbd38724ebe4c8571058563e9fad) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 3.688 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.200 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.264 ms.
+ -> (artifact id: '50b8a9b610ae5fc651425c800eaf9841') in 0.605084 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_AO.png
+  artifactKey: Guid(0f758c833aef98f44a31f4862949dd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_AO.png using Guid(0f758c833aef98f44a31f4862949dd57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce3a242579d54748d79600d0ee9fc258') in 0.029867 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7.terrainlayer
+  artifactKey: Guid(dd97ad0d35d36cd458b61fe2b63e2202) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7.terrainlayer using Guid(dd97ad0d35d36cd458b61fe2b63e2202) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 6.358 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.353 ms.
+ -> (artifact id: 'a376d11c98d13ea88ead8dcd091f799c') in 0.080573 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000257 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Height.png
+  artifactKey: Guid(20c69b931ed1e204590c65ed72e0f581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Height.png using Guid(20c69b931ed1e204590c65ed72e0f581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b574a1f664bb8967e52dcd03fb45a86') in 0.026894 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Mask.png
+  artifactKey: Guid(8b3ebb90f58407c4287677c74a779322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Mask.png using Guid(8b3ebb90f58407c4287677c74a779322) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.496 ms.
+ -> (artifact id: 'fdf7fa8c74c74e2b7c3513ea80c8b89f') in 0.206311 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Albedo.png
+  artifactKey: Guid(4dbef37ad4c9b9a4c968c19a85ae673c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Albedo.png using Guid(4dbef37ad4c9b9a4c968c19a85ae673c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42f2f663d468e7f8eed0549c75c66208') in 0.026032 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Normal.png
+  artifactKey: Guid(65fb10c79de0e69439d360735a8cfb6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Normal.png using Guid(65fb10c79de0e69439d360735a8cfb6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 7.273 ms.
+ -> (artifact id: '93a133f3ce76193ed7f4e2dd4141674e') in 0.039487 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Smoothness.png
+  artifactKey: Guid(1b93aa445cf740a40855803573a5370c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Rocky_Dirt_7/Rocky_Dirt_7_Smoothness.png using Guid(1b93aa445cf740a40855803573a5370c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '917a694f8b3953f1d554aadc736b5c62') in 0.142593 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 140.099461 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1
+  artifactKey: Guid(19523b0e474024c4a8feab262d98d74d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1 using Guid(19523b0e474024c4a8feab262d98d74d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b61a4fad4ce44dbbe93ed308fb29f60') in 0.006521 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002197 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+d3d12: upload buffer was full! Waited for COPY queue for 3.535 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 4.835 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.523 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.850 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.224 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.172 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.725 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.574 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 4.365 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 4.279 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.219 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 6.991 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 3.674 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.163 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.169 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 0.250 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.423 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.301 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 8.016 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 5.788 ms.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.78 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.411 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.75 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3977 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 0.93 GB.
+System memory in use after: 0.93 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5600.
+Total: 3.814300 ms (FindLiveObjects: 0.607900 ms CreateObjectMapping: 0.510100 ms MarkObjects: 2.631000 ms  DeleteObjects: 0.063900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 353.676566 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Albedo.png
+  artifactKey: Guid(af64dfc4793b1ec4b99cf645a6bc362a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Albedo.png using Guid(af64dfc4793b1ec4b99cf645a6bc362a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.240 ms.
+ -> (artifact id: '13da0560d4318bb8196fdd6254c00187') in 0.180704 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000339 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_AO.png
+  artifactKey: Guid(715f4366c54495f4d844e43627f660d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_AO.png using Guid(715f4366c54495f4d844e43627f660d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32e28a420ebbd47e1d64ef75c3202b32') in 0.290935 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000258 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Mask.png
+  artifactKey: Guid(c6eb8ed62637cdb42b9f6d766480ae26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Mask.png using Guid(c6eb8ed62637cdb42b9f6d766480ae26) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.453 ms.
+ -> (artifact id: '36c139583cd3a925abefc353ccb3a32e') in 0.237294 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000331 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Smoothness.png
+  artifactKey: Guid(296d9e521d9e46a41b2d9113f1f52a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Smoothness.png using Guid(296d9e521d9e46a41b2d9113f1f52a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e643deedff274803a42ae0ce6571d2fb') in 0.132254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Albedo.png
+  artifactKey: Guid(2179646b764c7174a87c9b0ef383bac8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Albedo.png using Guid(2179646b764c7174a87c9b0ef383bac8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81b7938287fdb50b6e22f71c9aa2522e') in 0.125169 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Albedo.png
+  artifactKey: Guid(cceb7a9fd443bf2459623011b3e2e57d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Albedo.png using Guid(cceb7a9fd443bf2459623011b3e2e57d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee0e2ba4f404b4482161355fa9699adb') in 0.142080 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000304 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Smoothness.png
+  artifactKey: Guid(f2485c643c83c0b40a18970718752023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Smoothness.png using Guid(f2485c643c83c0b40a18970718752023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b85a79bf50deacda3791abde9ba029b4') in 0.139263 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Mask.png
+  artifactKey: Guid(a2e73bfbb2793384fa38f942e70c296b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Mask.png using Guid(a2e73bfbb2793384fa38f942e70c296b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 7.022 ms.
+ -> (artifact id: 'a3692f8dd622641c683aabb799dc5661') in 0.258899 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000268 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Normal.png
+  artifactKey: Guid(dd0a876988a4f0646904f04ab2e219b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Normal.png using Guid(dd0a876988a4f0646904f04ab2e219b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.215 ms.
+ -> (artifact id: 'e322b84c6f34b44b6801244b0028b7b7') in 0.288608 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000291 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Height.png
+  artifactKey: Guid(d999005a78dbe3747af5be1f43c07c3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Sand_4/Sand_4_Height.png using Guid(d999005a78dbe3747af5be1f43c07c3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f5699fc5a48d43cff89b827f3f0bd98') in 0.147379 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Normal.png
+  artifactKey: Guid(5589b6dccf1aadf43948cf73fa99eabc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Normal.png using Guid(5589b6dccf1aadf43948cf73fa99eabc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.279 ms.
+ -> (artifact id: '6004261ed03a6d4b331ec4fd527d6491') in 0.229565 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Height.png
+  artifactKey: Guid(ae0d75f475d63544c8066e388b9d6d90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Height.png using Guid(ae0d75f475d63544c8066e388b9d6d90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c85a125c5c0c201c2c3e241ccf5ed1b') in 0.164254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000286 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Smoothness.png
+  artifactKey: Guid(b5ef207f650c7c14fa26c69efa95e62e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_Smoothness.png using Guid(b5ef207f650c7c14fa26c69efa95e62e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e75789ecd6289b21e1d019f71d8bb49') in 0.152346 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000336 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_AO.png
+  artifactKey: Guid(c21a7a7fab4c82648951a551cd4f027a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snow_8/Snow_8_AO.png using Guid(c21a7a7fab4c82648951a551cd4f027a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '852c2e39f3e3ea353f8f3e9e9b8642bf') in 0.146571 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000338 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Height.png
+  artifactKey: Guid(657717596759b5f4aaeec19272429a1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Height.png using Guid(657717596759b5f4aaeec19272429a1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ba2a9bc1ed633c32104568d9323bceb') in 0.148628 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000323 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Mask.png
+  artifactKey: Guid(dca5a268bf3cd0c48ae45ce4f1ddd71f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Mask.png using Guid(dca5a268bf3cd0c48ae45ce4f1ddd71f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 5.164 ms.
+ -> (artifact id: '043ad0b4090d3a8480b90dfc9996f984') in 0.222874 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000307 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Normal.png
+  artifactKey: Guid(2942a434d4252384580be56d7e735a94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_Normal.png using Guid(2942a434d4252384580be56d7e735a94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) d3d12: upload buffer was full! Waited for COPY queue for 6.501 ms.
+ -> (artifact id: '2fbcd0602ed53f0caa3f1b6d371de5d9') in 0.223478 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000324 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_AO.png
+  artifactKey: Guid(cef40fd85cfa5754a8f0ba433f8f5022) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Snowy_Rock_21/Snowy_Rock_21_AO.png using Guid(cef40fd85cfa5754a8f0ba433f8f5022) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd99847809c174469a5ab1e5275446119') in 0.136943 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002175 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+d3d12: upload buffer was full! Waited for COPY queue for 1.277 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.654 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.702 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.290 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.179 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.545 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 0.667 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.545 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.625 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.221 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.196 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.581 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.672 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.165 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.554 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.713 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 0.219 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.641 ms.
+d3d12: upload buffer was full! Waited for COPY queue for 1.702 ms.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.Texture3DPreview:InitPreviewUtility ()
+UnityEditor.Texture3DPreview:OnEnable ()
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.178 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3977 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 1.19 GB.
+System memory in use after: 1.19 GB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 5874.
+Total: 3.602800 ms (FindLiveObjects: 0.483700 ms CreateObjectMapping: 0.264800 ms MarkObjects: 2.760400 ms  DeleteObjects: 0.092800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 395.753466 seconds.
+  path: Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1.mat
+  artifactKey: Guid(132776baba9a35b4a8fbb0e217d5e6a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game Buffs/Free Realistic Nature Textures/Textures/Grass_1/Grass_1.mat using Guid(132776baba9a35b4a8fbb0e217d5e6a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Unable to allocate new scene culling mask
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene (bool)
+UnityEditor.SceneManagement.EditorSceneManager:NewPreviewScene ()
+UnityEditor.PreviewScene:.ctor (string)
+UnityEditor.PreviewRenderUtility:.ctor ()
+UnityEditor.MaterialEditor:GetPreviewRendererUtility ()
+UnityEditor.MaterialEditor:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Editor/Src/SceneManager/EditorSceneManager.cpp line 672]
+
+ -> (artifact id: 'eacb9295d95a324b419c23e4c0ade9e7') in 0.171799 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
