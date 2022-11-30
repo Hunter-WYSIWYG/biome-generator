@@ -120,133 +120,101 @@ public class TerrainGenerator : MonoBehaviour
 
     void CreateTerrainMesh()
     {
-        Vector3[] terrainVertices = new Vector3[4*(meshLength + 1)*(meshWidth + 1)];
-        Vector2[] terrainUVs = new Vector2[4*(meshLength + 1)*(meshWidth + 1)];
+        Vector3[] terrainVertices = new Vector3[(meshLength + 1)*(meshWidth + 1)];
+        terrainVertices = CalcVertexHeights(terrainVertices);
+
         int[] terrainTriangles = new int [meshLength * meshWidth * 6];
-        Color[] terrainColors = new Color[terrainVertices.Length];
-
-        terrainVertices = CalcTerrainVertices(terrainVertices);
-        terrainUVs = CalcTerrainUVs(terrainUVs);
-        terrainTriangles = CalcTerrainTriangles(terrainTriangles);
-        terrainColors = CalcTerrainColors(terrainColors, terrainVertices);
-
-        terrainMesh.Clear();
-        terrainMesh.vertices = terrainVertices;
-        terrainMesh.triangles = terrainTriangles;
-        terrainMesh.uv = terrainUVs;
-        //terrainMesh.colors = terrainColors;
-        terrainMesh.RecalculateNormals();
-        terrainMesh.RecalculateBounds();
-    }
-
-    Vector2[] CalcTerrainUVs(Vector2[] terrainUVs) {
-
-        for (int index = 0, z = 0; z < meshWidth; z++) {
-            for (int x = 0; x < meshLength; x++) {
-                terrainUVs[index * 4 + 0] = new Vector2(0, 0);
-                terrainUVs[index * 4 + 1] = new Vector2(0, 1);
-                terrainUVs[index * 4 + 2] = new Vector2(1, 1);
-                terrainUVs[index * 4 + 3] = new Vector2(1, 0);
-                index++;
-            }
-        }
-        
-        return terrainUVs;
-    }
-
-    Color[] CalcTerrainColors(Color[] terrainColors, Vector3[] terrainVertices) {
-        if (lockGradientOnCurrentHeights) {
-            gradientMinValue = minTerrainHeight;
-            gradientMaxValue = maxTerrainHeight;
-            lockGradientOnCurrentHeights = false;
-        }
-
-        for (int i = 0, z = 0; z < meshWidth; z++)
-        {
-            for (int x = 0; x < meshLength; x++)
-            {
-                float gradientValue = Mathf.InverseLerp(gradientMinValue, gradientMaxValue, terrainVertices[i].y);
-                terrainColors[i] = usedGradient.Evaluate(gradientValue);
-                i++;
-            }
-        }
-        return terrainColors;
-    }
-
-    int[] CalcTerrainTriangles(int[] terrainTriangles) {
         int currentVertex = 0;
         int currentTriangles = 0;
         for (int z = 0; z < meshWidth; z++)
         {
             for (int x = 0; x < meshLength; x++)
             {
-                terrainTriangles[0 + currentTriangles] = 4 * currentVertex + 0;
-                terrainTriangles[1 + currentTriangles] = 4 * currentVertex + 1;
-                terrainTriangles[2 + currentTriangles] = 4 * currentVertex + 2;
-                terrainTriangles[3 + currentTriangles] = 4 * currentVertex + 0;
-                terrainTriangles[4 + currentTriangles] = 4 * currentVertex + 2;
-                terrainTriangles[5 + currentTriangles] = 4 * currentVertex + 3;
+                terrainTriangles[0 + currentTriangles] = currentVertex;
+                terrainTriangles[1 + currentTriangles] = currentVertex + meshLength + 1;
+                terrainTriangles[2 + currentTriangles] = currentVertex + 1;
+                terrainTriangles[3 + currentTriangles] = currentVertex + 1;
+                terrainTriangles[4 + currentTriangles] = currentVertex + meshLength + 1;
+                terrainTriangles[5 + currentTriangles] = currentVertex + meshLength + 2;
 
                 currentVertex++;
                 currentTriangles += 6;
             }
+            currentVertex++;
         }
-        return terrainTriangles;
+
+        Color[] terrainColors = new Color[terrainVertices.Length];
+
+        if (lockGradientOnCurrentHeights) {
+            gradientMinValue = minTerrainHeight;
+            gradientMaxValue = maxTerrainHeight;
+            lockGradientOnCurrentHeights = false;
+        }
+
+        for (int i = 0, z = 0; z <= meshWidth; z++)
+        {
+            for (int x = 0; x <= meshLength; x++)
+            {
+                float gradientValue = Mathf.InverseLerp(gradientMinValue, gradientMaxValue, terrainVertices[i].y);
+                terrainColors[i] = usedGradient.Evaluate(gradientValue);
+                i++;
+            }
+        }
+
+        terrainMesh.Clear();
+        terrainMesh.vertices = terrainVertices;
+        terrainMesh.triangles = terrainTriangles;
+        terrainMesh.colors = terrainColors;
+        terrainMesh.RecalculateNormals();
     }
 
-    Vector3[] CalcTerrainVertices(Vector3[] terrainVertices)
+    Vector3[] CalcVertexHeights(Vector3[] meshNodes)
     {
-        for (int nodeIndex = 0, z = 0; z < meshWidth; z++)
+        for (int i = 0, z = 0; z <= meshWidth; z++)
         {
-            for (int x = 0; x < meshLength; x++)
+            for (int x = 0; x <= meshLength; x++)
             {
-                terrainVertices[nodeIndex * 4 + 0] = new Vector3(x, CalcVertexHeight(x, z), z);
-                terrainVertices[nodeIndex * 4 + 1] = new Vector3(x, CalcVertexHeight(x, z+1), z + 1);
-                terrainVertices[nodeIndex * 4 + 2] = new Vector3(x + 1, CalcVertexHeight(x+1, z+1), z + 1);
-                terrainVertices[nodeIndex * 4 + 3] = new Vector3(x + 1, CalcVertexHeight(x+1, z), z);
-                nodeIndex++;
+                //base noise values for height calculations
+                float noiseXCoord = x * heightDensity + noiseOffsetX;
+                float noiseYCoord = z * heightDensity + noiseOffsetZ;
+                float vertexHeight = Mathf.PerlinNoise(noiseXCoord, noiseYCoord);
 
-                float CalcVertexHeight(int x, int z) {
-                    //base noise values for height calculations
-                    float noiseXCoord = x * heightDensity + noiseOffsetX;
-                    float noiseYCoord = z * heightDensity + noiseOffsetZ;
-                    float vertexHeight = Mathf.PerlinNoise(noiseXCoord, noiseYCoord);
+                //calculate breakpoint where upper height area begins (upper X percent of terrain)
+                float heightDifference = maxTerrainHeight - minTerrainHeight;
+                float upperHeightRange = heightDifference * upperHeightPercent;
+                float upperHeightBegin = minTerrainHeight + (heightDifference - upperHeightRange);
 
-                    //calculate breakpoint where upper height area begins (upper X percent of terrain)
-                    float heightDifference = maxTerrainHeight - minTerrainHeight;
-                    float upperHeightRange = heightDifference * upperHeightPercent;
-                    float upperHeightBegin = minTerrainHeight + (heightDifference - upperHeightRange);
-
-                    //terrain roughness for upper and lower height areas
-                    if (Mathf.Lerp(minTerrainHeight, maxTerrainHeight, vertexHeight) <= upperHeightBegin) {
-                        vertexHeight = AddNoiseLayers(vertexHeight, lowerNoiseLayerHeightVariety, lowerNoiseLayerDensity, x, z);
-                    } else {
-                        vertexHeight = AddNoiseLayers(vertexHeight, upperNoiseLayerHeightVariety, upperNoiseLayerDensity, x, z);
-                    }
-
-                    //noise layers can rarely lower the terrain into negative domain
-                    //clamp that to 0 to prevent imaginary numbers in the powering step
-                    vertexHeight = Math.Max(0,vertexHeight);
-                    
-                    //terrain height additions/multiplications/powering
-                    vertexHeight = Mathf.Pow(vertexHeight, noisePower);
-                    vertexHeight *= heightVariety;
-
-                    //track min/max terrain height
-                    if (z==0 && x==0) {
-                        minTerrainHeight = vertexHeight;
-                        maxTerrainHeight = vertexHeight;
-                    } else {
-                        if (vertexHeight < minTerrainHeight)
-                            minTerrainHeight = vertexHeight;
-                        if (vertexHeight > maxTerrainHeight)
-                            maxTerrainHeight = vertexHeight;
-                    }
-
-                    return vertexHeight;
+                //terrain roughness for upper and lower height areas
+                if (Mathf.Lerp(minTerrainHeight, maxTerrainHeight, vertexHeight) <= upperHeightBegin) {
+                    vertexHeight = AddNoiseLayers(vertexHeight, lowerNoiseLayerHeightVariety, lowerNoiseLayerDensity);
+                } else {
+                    vertexHeight = AddNoiseLayers(vertexHeight, upperNoiseLayerHeightVariety, upperNoiseLayerDensity);
                 }
 
-                float AddNoiseLayers(float height, float noiseLayerHeightVariety, float noiseLayerDensity, int x, int z)
+                //noise layers can rarely lower the terrain into negative domain
+                //clamp that to 0 to prevent imaginary numbers in the powering step
+                vertexHeight = Math.Max(0,vertexHeight);
+                
+                //terrain height additions/multiplications/powering
+                vertexHeight = Mathf.Pow(vertexHeight, noisePower);
+                vertexHeight *= heightVariety;
+
+                //track min/max terrain height
+                if (z==0 && x==0) {
+                    minTerrainHeight = vertexHeight;
+                    maxTerrainHeight = vertexHeight;
+                } else {
+                    if (vertexHeight < minTerrainHeight)
+                        minTerrainHeight = vertexHeight;
+                    if (vertexHeight > maxTerrainHeight)
+                        maxTerrainHeight = vertexHeight;
+                }
+
+                meshNodes[i] = new Vector3(x, vertexHeight, z);
+
+                i++;
+
+                float AddNoiseLayers(float height, float noiseLayerHeightVariety, float noiseLayerDensity)
                 {
                     height += noiseLayerHeightVariety *
                         Mathf.PerlinNoise(
@@ -265,25 +233,25 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         //close the edges of the terrain
-        for (int i = 0; i < terrainVertices.Length; i++)
+        for (int i = 0; i < meshNodes.Length; i++)
         {
-            float xCoord = terrainVertices[i].x;
-            float zCoord = terrainVertices[i].z;
+            float xCoord = meshNodes[i].x;
+            float zCoord = meshNodes[i].z;
             if (xCoord == 0) {
-                terrainVertices[i] = new Vector3(xCoord+1, minTerrainHeight, zCoord);
+                meshNodes[i] = new Vector3(xCoord+1, minTerrainHeight, zCoord);
             }
             if (xCoord == meshLength) {
-                terrainVertices[i] = new Vector3(xCoord-1, minTerrainHeight, zCoord);
+                meshNodes[i] = new Vector3(xCoord-1, minTerrainHeight, zCoord);
             }
             if (zCoord == 0) {
-                terrainVertices[i] = new Vector3(Mathf.Clamp(xCoord, 1, meshLength-1), minTerrainHeight, zCoord+1);
+                meshNodes[i] = new Vector3(Mathf.Clamp(xCoord, 0, meshLength-1), minTerrainHeight, zCoord+1);
             }
             if (zCoord == meshWidth) {
-                terrainVertices[i] = new Vector3(Mathf.Clamp(xCoord, 1, meshLength-1), minTerrainHeight, zCoord-1);
+                meshNodes[i] = new Vector3(Mathf.Clamp(xCoord, 1, meshLength), minTerrainHeight, zCoord-1);
             }
         }
 
-        return terrainVertices;
+        return meshNodes;
     }
 
     void SetPredefinedParameters() {
