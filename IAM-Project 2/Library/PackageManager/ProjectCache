@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637974459998907505
-    m_Hash: 238540979
+      ticks: 638054052347222803
+    m_Hash: 198904860
   m_LockFileStatus:
     m_FilePath: D:/Verschiedenes/HSA/IAM-Projekt-2/iam-projekt-2/IAM-Project 2/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637974459998907505
-    m_Hash: 275815732
+      ticks: 638054052347753012
+    m_Hash: 2513466296
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -36,6 +36,60 @@ m_LocalPackages:
 m_ProjectPath: D:/Verschiedenes/HSA/IAM-Projekt-2/iam-projekt-2/IAM-Project 2/Packages
 m_EditorVersion: 2021.1.7f1 (d91830b65d9b)
 m_ResolvedPackages:
+- packageId: com.unity.2d.sprite@1.0.0
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.0
+  source: 2
+  resolvedPath: D:\Verschiedenes\HSA\IAM-Projekt-2\iam-projekt-2\IAM-Project 2\Library\PackageCache\com.unity.2d.sprite@1.0.0
+  assetPath: Packages/com.unity.2d.sprite
+  name: com.unity.2d.sprite
+  displayName: 2D Sprite
+  author:
+    name: 
+    email: 
+    url: 
+  category: 2D
+  type: 
+  description: Use Unity Sprite Editor Window to create and edit Sprite asset properties
+    like pivot, borders and Physics shape
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 1.0.0
+    compatible:
+    - 1.0.0
+    verified: 1.0.0
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - 2d
+  - sprite
+  - sprite editor window
+  registry:
+    id: 
+    name: 
+    url: 
+    scopes: []
+    isDefault: 0
+    capabilities: 0
+  hasRegistry: 0
+  hideInEditor: 1
+  entitlements:
+    isAllowed: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 1.0.0
+    nextVersion: 
 - packageId: com.unity.collab-proxy@1.3.9
   testable: 0
   isDirectDependency: 1
@@ -109,6 +163,7 @@ m_ResolvedPackages:
     - 1.17.1
     - 1.17.2
     - 1.17.6
+    - 1.17.7
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -155,6 +210,7 @@ m_ResolvedPackages:
     - 1.17.1
     - 1.17.2
     - 1.17.6
+    - 1.17.7
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -398,7 +454,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Code editor integration for supporting Visual Studio Code as code
     editor for unity. Adds support for generating csproj files for intellisense purposes,
     auto discovery of installations, etc.
@@ -435,7 +491,7 @@ m_ResolvedPackages:
     isDefault: 1
     capabilities: 7
   hasRegistry: 1
-  hideInEditor: 1
+  hideInEditor: 0
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
@@ -739,7 +795,9 @@ m_ResolvedPackages:
     - 1.1.31
     - 1.1.33
     - 1.3.0
+    - 1.3.1
     - 2.0.1-exp.1
+    - 2.0.1-exp.2
     - 2.0.1-pre.12
     - 2.0.1-pre.18
     compatible:
@@ -751,7 +809,9 @@ m_ResolvedPackages:
     - 1.1.31
     - 1.1.33
     - 1.3.0
+    - 1.3.1
     - 2.0.1-exp.1
+    - 2.0.1-exp.2
     - 2.0.1-pre.12
     - 2.0.1-pre.18
     verified: 1.1.33
@@ -809,7 +869,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: Text Rendering
-  type: 
+  type: asset
   description: 'TextMeshPro is the ultimate text solution for Unity. It''s the perfect
     replacement for Unity''s UI Text and the legacy Text Mesh.
 
@@ -950,7 +1010,7 @@ m_ResolvedPackages:
     isDefault: 1
     capabilities: 7
   hasRegistry: 1
-  hideInEditor: 1
+  hideInEditor: 0
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
@@ -1059,6 +1119,7 @@ m_ResolvedPackages:
     - 1.7.0
     - 1.7.1
     - 1.7.2
+    - 1.8.0
     compatible:
     - 1.5.4
     - 1.5.5
@@ -1077,6 +1138,7 @@ m_ResolvedPackages:
     - 1.7.0
     - 1.7.1
     - 1.7.2
+    - 1.8.0
     verified: 1.5.7
   dependencies:
   - name: com.unity.modules.director
@@ -1204,7 +1266,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: tool
   description: "Visual Scripting, previously known as BOLT, is an alternative workflow
     to design behaviours. Instead of the classic method of writing a C# script, visual
     scripting offers a way to design behaviours intuitively without code, by connecting
@@ -1314,7 +1376,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Package that provides simple management of XR plug-ins. Manages and
     offers help with loading, initialization, settings, and build support for XR
     plug-ins.
@@ -1424,7 +1486,7 @@ m_ResolvedPackages:
     isDefault: 1
     capabilities: 7
   hasRegistry: 1
-  hideInEditor: 1
+  hideInEditor: 0
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
@@ -3524,7 +3586,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Unity's C# SIMD math library providing vector types and math functions
     with a shader like syntax.
   status: 4
@@ -3566,7 +3628,7 @@ m_ResolvedPackages:
     isDefault: 1
     capabilities: 7
   hasRegistry: 1
-  hideInEditor: 1
+  hideInEditor: 0
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
@@ -3928,7 +3990,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: General search window for use in the Editor. First target use is for
     GraphView node search.
   status: 4
@@ -3971,7 +4033,7 @@ m_ResolvedPackages:
     isDefault: 1
     capabilities: 7
   hasRegistry: 1
-  hideInEditor: 1
+  hideInEditor: 0
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
