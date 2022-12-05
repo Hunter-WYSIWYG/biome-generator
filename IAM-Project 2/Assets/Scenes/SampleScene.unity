@@ -155,9 +155,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageDim: {x: 960, y: 540}
   regionAmount: 50
+  averageTemperature: 0.183
+  averagePrecipitation: 0.188
   TemperatureMap: {fileID: 2137429596}
   PrecipitationMap: {fileID: 2034697327}
   BiomeMap: {fileID: 771502298}
+  generateNewMap: 1
 --- !u!212 &619268997
 SpriteRenderer:
   m_ObjectHideFlags: 0

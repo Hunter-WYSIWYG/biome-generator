@@ -1,5 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [RequireComponent(typeof(MeshFilter))]
 public class TerrainGenerator : MonoBehaviour
@@ -193,7 +194,7 @@ public class TerrainGenerator : MonoBehaviour
 
                 //noise layers can rarely lower the terrain into negative domain
                 //clamp that to 0 to prevent imaginary numbers in the powering step
-                vertexHeight = Math.Max(0,vertexHeight);
+                vertexHeight = Mathf.Max(0,vertexHeight);
                 
                 //terrain height additions/multiplications/powering
                 vertexHeight = Mathf.Pow(vertexHeight, noisePower);
