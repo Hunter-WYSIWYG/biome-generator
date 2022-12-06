@@ -71,7 +71,20 @@ public class TerrainGenerator : MonoBehaviour
     [Header("Predefined Gradients")]
     public Gradient mountainGradient;
     public Gradient islandGradient;
+
+    [Header("Biomes")]
+    public bool showGradientColors = false;
+    public bool showBiomeColors = false;
+    public bool showTemperatureColors = false;
+    public bool showPrecipitationColors = false;
+    //make temperatures lower at mountains tops
+    public BiomeGenerator biomeGenerator;
     
+    private int currentColorMapID = 0;
+    private static int gradientMapID = 0;
+    private static int biomeMapID = 1;
+    private static int temperatureMapID = 2;
+    private static int precipitationMapID = 3;
     private int currentLandscapeID = 0;
     private static int mountainsID = 1;
     private static int islandsID = 2;
@@ -95,11 +108,12 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Update()
     {
+        UpdateColorMap();
         SetPredefinedParameters();
-        UpdateMeshes();
+        UpdateMesh();
     }
 
-    void UpdateMeshes()
+    void UpdateMesh()
     {
         //add necessary nodes to close terrain edges
         meshLength = terrainLenght + 2;
@@ -152,13 +166,26 @@ public class TerrainGenerator : MonoBehaviour
             lockGradientOnCurrentHeights = false;
         }
 
-        for (int i = 0, z = 0; z <= meshWidth; z++)
+        bool noTextureAvailable = !biomeGenerator.isBiomeTextureGenerated();
+        int index = 0;
+        for (int z = 0; z <= meshWidth; z++)
         {
             for (int x = 0; x <= meshLength; x++)
             {
-                float gradientValue = Mathf.InverseLerp(gradientMinValue, gradientMaxValue, terrainVertices[i].y);
-                terrainColors[i] = usedGradient.Evaluate(gradientValue);
-                i++;
+                if(currentColorMapID == gradientMapID || noTextureAvailable) {
+                    float gradientValue = Mathf.InverseLerp(gradientMinValue, gradientMaxValue, terrainVertices[index].y);
+                    terrainColors[index] = usedGradient.Evaluate(gradientValue);
+                    index++;
+                } else if(currentColorMapID == biomeMapID) {
+                    terrainColors[index] = biomeGenerator.getBiomeTexture().GetPixel(x,z);
+                    index++;
+                } else if(currentColorMapID == temperatureMapID) {
+                    terrainColors[index] = biomeGenerator.getTempTexture().GetPixel(x,z);
+                    index++;
+                } else if(currentColorMapID == precipitationMapID) {
+                    terrainColors[index] = biomeGenerator.getPrecTexture().GetPixel(x,z);
+                    index++;
+                }
             }
         }
 
@@ -168,6 +195,8 @@ public class TerrainGenerator : MonoBehaviour
         terrainMesh.colors = terrainColors;
         terrainMesh.RecalculateNormals();
     }
+
+
 
     Vector3[] CalcVertexHeights(Vector3[] meshNodes)
     {
@@ -258,13 +287,11 @@ public class TerrainGenerator : MonoBehaviour
     void SetPredefinedParameters() {
         if (generateMountains) {
             currentLandscapeID = mountainsID;
-            setFalseExcept(mountainsID);
             SetMountainsSettings();
             generateMountains = false;
         }
         if (generateIslands) {
             currentLandscapeID = islandsID;
-            setFalseExcept(islandsID);
             SetIslandsSettings();
             generateIslands = false;
         }
@@ -298,22 +325,24 @@ public class TerrainGenerator : MonoBehaviour
             lockWaterPlaneOnCurrentHeights = true;
             lockGradientOnCurrentHeights = true;
         }
+    }
 
-        void setFalseExcept(int landscapeID) {
-            switch (landscapeID) {
-                case 1:
-                    generateMountains = true;
-                    generateIslands = false;
-                    break;
-                case 2:
-                    generateMountains = false;
-                    generateIslands = true;
-                    break;
-                default:
-                    generateMountains = false;
-                    generateIslands = false;
-                    break;
-            }
+    void UpdateColorMap() {
+        if(showGradientColors) {
+            showGradientColors = false;
+            currentColorMapID = gradientMapID;
+        }
+        if(showBiomeColors) {
+            showBiomeColors = false;
+            currentColorMapID = biomeMapID;
+        }
+        if(showTemperatureColors) {
+            showTemperatureColors = false;
+            currentColorMapID = temperatureMapID;
+        }
+        if(showPrecipitationColors) {
+            showPrecipitationColors = false;
+            currentColorMapID = precipitationMapID;
         }
     }
 

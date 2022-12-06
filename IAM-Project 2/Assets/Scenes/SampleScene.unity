@@ -155,8 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageDim: {x: 960, y: 540}
   regionAmount: 50
-  averageTemperature: 0.183
-  averagePrecipitation: 0.188
+  averageTemperature: 0.5
+  averagePrecipitation: 0.5
   TemperatureMap: {fileID: 2137429596}
   PrecipitationMap: {fileID: 2034697327}
   BiomeMap: {fileID: 771502298}
@@ -746,6 +746,11 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
+  showGradientColors: 0
+  showBiomeColors: 0
+  showTemperatureColors: 0
+  showPrecipitationColors: 0
+  biomeGenerator: {fileID: 619268996}
 --- !u!23 &1384851841
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -994,7 +999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1960932595
 Transform:
   m_ObjectHideFlags: 0
@@ -1061,7 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

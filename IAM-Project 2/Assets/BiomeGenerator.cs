@@ -18,6 +18,8 @@ public class BiomeGenerator : MonoBehaviour
 	public Image BiomeMap;
 	public bool generateNewMap = true;
 
+	private bool biomeGenerationFinished = false;
+
 	//Temperature (0-2) & Precipitation (3-5) Colors
 	private Color32[] temperatureColors = {
 		new Color32(255, 255, 0, 255),
@@ -33,20 +35,24 @@ public class BiomeGenerator : MonoBehaviour
 	//contains a list of region neighbor ids for every region
 	private List<int>[] tempSprite_regionNeighbors;
 	private List<int>[] precSprite_regionNeighbors;
+	private List<int[]> colorIDMaps;
+
 	private void Update() {
 		if(generateNewMap) {
 			generateNewMap = false;
-			//init region neighbor arrays of lists
+
+			//init arrays
+			colorIDMaps = new List<int[]>();
 			tempSprite_regionNeighbors = new List<int>[regionAmount];
 			for (int i = 0; i < regionAmount; i++) {
 				tempSprite_regionNeighbors[i] = new List<int>();
 			}
-
 			precSprite_regionNeighbors = new List<int>[regionAmount];
 			for (int i = 0; i < regionAmount; i++) {
 				precSprite_regionNeighbors[i] = new List<int>();
 			}
 
+			//generate sprites
 			Sprite TemperatureMapSprite = Sprite.Create(GetDiagram(true), new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
 			TemperatureMap.sprite = TemperatureMapSprite;
 
@@ -54,6 +60,7 @@ public class BiomeGenerator : MonoBehaviour
 			PrecipitationMap.sprite = PrecipitationMapSprite;
 
 			BiomeMap.sprite = MergeSprites(TemperatureMapSprite, PrecipitationMapSprite);
+			biomeGenerationFinished = true;
 		}
 	}
 	//Sprites have to be same size
@@ -67,12 +74,12 @@ public class BiomeGenerator : MonoBehaviour
 			for (int x = 0; x < imageDim.x; x++) {
 				Color firstColor = firstTexture.GetPixel(x,y);
 				Color secondColor = secondTexture.GetPixel(x,y);
-				pixelColors[index] = Color.Lerp(firstColor, secondColor, 0.5f);
+				pixelColors[index] = mergeColors(firstColor, secondColor, 0.5f);
 				index++;
 			}
 		}
 
-		Texture2D mergedTexture = GetImageFromColorArray(pixelColors);
+		Texture2D mergedTexture = GetTextureFromColorArray(pixelColors);
 		Sprite mergedSprite = Sprite.Create(mergedTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
 		return mergedSprite;
 	}
@@ -101,18 +108,23 @@ public class BiomeGenerator : MonoBehaviour
 		} else {
 			regionColorIDs = CalcRegionColorIDs(calcTemperatureDiagram, precSprite_regionNeighbors);
 		}
+		
 
 		Color[] pixelColors = new Color[imageDim.x * imageDim.y];
+		int[] pixelColorIDs = new int [imageDim.x * imageDim.y];
 		for (int i = 0; i < pixelColors.Length; i++) {
 			int pixelColorID = regionColorIDs[pixelRegions[i]];
+			pixelColorIDs[i] = pixelColorID;
 			if (calcTemperatureDiagram) {
 				pixelColors[i] = temperatureColors[pixelColorID];
 			} else {
 				pixelColors[i] = precipitationColors[pixelColorID];
 			}
 		}
-		return GetImageFromColorArray(pixelColors);
+		colorIDMaps.Add(pixelColorIDs);
+		return GetTextureFromColorArray(pixelColors);
 	}
+
 	int[] CalcRegionColorIDs(bool calcTemperatureDiagram, List<int>[] regionNeighbors) {
 		int[] regionColorIDs = new int[regionAmount];
 		for (int i = 0; i < regionAmount; i++) {
@@ -222,12 +234,32 @@ public class BiomeGenerator : MonoBehaviour
 		}
 		return nearestRegionID;
 	}
-	Texture2D GetImageFromColorArray(Color[] pixelColors)
+	public Texture2D GetTextureFromColorArray(Color[] pixelColors)
 	{
 		Texture2D tex = new Texture2D(imageDim.x, imageDim.y);
 		tex.filterMode = FilterMode.Point;
 		tex.SetPixels(pixelColors);
 		tex.Apply();
 		return tex;
+	}
+
+	public Texture2D getBiomeTexture() {
+		return BiomeMap.sprite.texture;
+	}
+
+	public Texture2D getTempTexture() {
+		return TemperatureMap.sprite.texture;
+	}
+
+	public Texture2D getPrecTexture() {
+		return PrecipitationMap.sprite.texture;
+	}
+
+	public bool isBiomeTextureGenerated() {
+		return biomeGenerationFinished;
+	}
+
+	public Color mergeColors(Color color1, Color color2, float mergeProportions) {
+		return Color.Lerp(color1, color2, Mathf.Clamp(mergeProportions, 0f, 1f));
 	}
 }
