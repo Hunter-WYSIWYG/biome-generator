@@ -153,12 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e851e8397d02e4c45a2e55f464de681a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageDim: {x: 960, y: 540}
+  imageDim: {x: 300, y: 300}
   regionAmount: 50
-  averageTemperature: 0.5
-  averagePrecipitation: 0.5
-  TemperatureMap: {fileID: 2137429596}
-  PrecipitationMap: {fileID: 2034697327}
+  averageTemp: 0.5
+  averagePrec: 0.5
+  TempMap: {fileID: 2137429596}
+  PrecMap: {fileID: 2034697327}
   BiomeMap: {fileID: 771502298}
   generateNewMap: 1
 --- !u!212 &619268997

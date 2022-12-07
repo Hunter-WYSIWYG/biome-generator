@@ -9,64 +9,224 @@ public class BiomeGenerator : MonoBehaviour
     public Vector2Int imageDim;
 	public int regionAmount;
 	[Range(0,1)]
-	public float averageTemperature = 0.5f;
+	public float averageTemp = 0.5f;
 	[Range(0,1)]
-	public float averagePrecipitation = 0.5f;
+	public float averagePrec = 0.5f;
+	public float minkowskiLambda = 3f;
 
-	public Image TemperatureMap;
-	public Image PrecipitationMap;
+	public Image TempMap;
+	public Image PrecMap;
 	public Image BiomeMap;
 	public bool generateNewMap = true;
+	private int[] tempIntensityArray;
+	private int[] precIntensityArray;
 
 	private bool biomeGenerationFinished = false;
-
-	//Temperature (0-2) & Precipitation (3-5) Colors
-	private Color32[] temperatureColors = {
-		new Color32(255, 255, 0, 255),
-		new Color32(255, 153, 51, 255),
-		new Color32(255, 0, 0, 255)
-	};
-	private Color32[] precipitationColors = {
-		new Color32(153, 204, 255, 255),
-		new Color32(0, 153, 255, 255),
-		new Color32(0, 0, 255, 255)
-	};
-
 	//contains a list of region neighbor ids for every region
-	private List<int>[] tempSprite_regionNeighbors;
-	private List<int>[] precSprite_regionNeighbors;
-	private List<int[]> colorIDMaps;
+	private List<int>[] tempRegionNeighbors;
+	private List<int>[] precRegionNeighbors;
+
+	//Temp (0-2) & Prec (3-5) Colors
+	private Dictionary<int, Color32> tempColors = new Dictionary<int, Color32>(){
+		{0, new Color32(255, 255, 0, 255)},
+		{1, new Color32(255, 153, 51, 255)},
+		{2, new Color32(255, 0, 0, 255)}
+	};
+	private Dictionary<int, Color32> precColors = new Dictionary<int, Color32>(){
+		{0, new Color32(153, 204, 255, 255)},
+		{1, new Color32(0, 153, 255, 255)},
+		{2, new Color32(0, 0, 255, 255)}
+	};
+	private bool tmp = true;
 
 	private void Update() {
 		if(generateNewMap) {
 			generateNewMap = false;
 
-			//init arrays
-			colorIDMaps = new List<int[]>();
-			tempSprite_regionNeighbors = new List<int>[regionAmount];
+			//init region neighbor arrays
+			tempRegionNeighbors = new List<int>[regionAmount];
 			for (int i = 0; i < regionAmount; i++) {
-				tempSprite_regionNeighbors[i] = new List<int>();
+				tempRegionNeighbors[i] = new List<int>();
 			}
-			precSprite_regionNeighbors = new List<int>[regionAmount];
+			precRegionNeighbors = new List<int>[regionAmount];
 			for (int i = 0; i < regionAmount; i++) {
-				precSprite_regionNeighbors[i] = new List<int>();
+				precRegionNeighbors[i] = new List<int>();
 			}
 
-			//generate sprites
-			Sprite TemperatureMapSprite = Sprite.Create(GetDiagram(true), new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
-			TemperatureMap.sprite = TemperatureMapSprite;
+			//generate/set intensityArrays, textures, sprites
+			tempIntensityArray = calculateVoronoiDiagram(true);
+			Texture2D tempTexture = GetTextureFromIntensityArray(tempIntensityArray, tempColors);
+			Sprite TempSprite = Sprite.Create(tempTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
+			TempMap.sprite = TempSprite;
 
-			Sprite PrecipitationMapSprite = Sprite.Create(GetDiagram(false), new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
-			PrecipitationMap.sprite = PrecipitationMapSprite;
+			precIntensityArray = calculateVoronoiDiagram(false);
+			Texture2D precTexture = GetTextureFromIntensityArray(precIntensityArray, precColors);
+			Sprite PrecSprite = Sprite.Create(precTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
+			PrecMap.sprite = PrecSprite;
 
-			BiomeMap.sprite = MergeSprites(TemperatureMapSprite, PrecipitationMapSprite);
+			Texture2D biomeTexture = MergeTextures(tempTexture, precTexture);
+			BiomeMap.sprite = Sprite.Create(biomeTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
 			biomeGenerationFinished = true;
 		}
 	}
-	//Sprites have to be same size
-	Sprite MergeSprites(Sprite firstSprite, Sprite secondSprite) {
-		Texture2D firstTexture = firstSprite.texture;
-		Texture2D secondTexture = secondSprite.texture;
+
+	//calc voronoi diagram: array of intensity values (0-2)
+	private int[] calculateVoronoiDiagram(bool isTempDiagram) {
+		//roll centroids
+		Vector2Int[] centroids = new Vector2Int[regionAmount];
+		for(int i = 0; i < regionAmount; i++)
+		{
+			centroids[i] = new Vector2Int(Random.Range(0, imageDim.x), Random.Range(0, imageDim.y));
+		}
+		
+		//determine region id of each pixel
+		int[] pixelRegions = new int[imageDim.x * imageDim.y];
+        int index = 0;
+		for(int y = 0; y < imageDim.y; y++)
+		{
+			for(int x = 0; x < imageDim.x; x++)
+			{
+				pixelRegions[index] = GetClosestCentroidIndex(new Vector2Int(x, y), centroids, isTempDiagram);
+                index++;
+			}
+		}
+
+		//determine intensity ids for regions
+		int[] regionIntensityIDs;
+		if (isTempDiagram) {
+			regionIntensityIDs = CalcRegionIntensityIDs(isTempDiagram, tempRegionNeighbors);
+		} else {
+			regionIntensityIDs = CalcRegionIntensityIDs(isTempDiagram, precRegionNeighbors);
+		}
+		
+		//
+		int[] pixelIntensityIDs = new int [imageDim.x * imageDim.y];
+		for (int i = 0; i < pixelIntensityIDs.Length; i++) {
+			int pixelIntensityID = regionIntensityIDs[pixelRegions[i]];
+			pixelIntensityIDs[i] = pixelIntensityID;
+		}
+		return pixelIntensityIDs;
+	}
+	int[] CalcRegionIntensityIDs(bool calcTempDiagram, List<int>[] regionNeighbors) {
+		int[] regionIntensityIDs = new int[regionAmount];
+		for (int i = 0; i < regionAmount; i++) {
+			regionIntensityIDs[i] = -1;
+		}
+		for (int i = 0; i < regionAmount; i++) {
+			List<int> neighboringIntensityIDs = new List<int>();
+			for (int j = 0; j < regionNeighbors[i].Count; j++) {
+				int neighborID = regionNeighbors[i][j];
+				if (!neighboringIntensityIDs.Contains(regionIntensityIDs[neighborID])) {
+					neighboringIntensityIDs.Add(regionIntensityIDs[neighborID]);
+				}
+			}
+			if (!neighboringIntensityIDs.Contains(0) && !neighboringIntensityIDs.Contains(2)) {
+				regionIntensityIDs[i] = rollIntensityID(calcTempDiagram, 0, 3);
+			} else if (!neighboringIntensityIDs.Contains(0) && neighboringIntensityIDs.Contains(2)) {
+				regionIntensityIDs[i] = rollIntensityID(calcTempDiagram, 1, 3);
+			} else if (neighboringIntensityIDs.Contains(0) && !neighboringIntensityIDs.Contains(2)) {
+				regionIntensityIDs[i] = rollIntensityID(calcTempDiagram, 0, 2);
+			} else {
+				regionIntensityIDs[i] = 1;
+			}
+		}
+		return regionIntensityIDs;
+	}
+
+	private int rollIntensityID(bool calcTempDiagram, int lowestIntensityID, int highestIntensityID) {
+		float probabilityFactor;
+		if(calcTempDiagram) {
+			probabilityFactor = averageTemp;
+		} else {
+			probabilityFactor = averagePrec;
+		}
+		float dieValue;
+		int intensityIDRange = highestIntensityID - lowestIntensityID;
+		int intensityID;
+		if(intensityIDRange == 3) {
+			//there are 3 possible color IDs
+			//calculate probabilities from probabilityFactor with quadratic functions
+			float lowProbability = 2/3 * Mathf.Pow(probabilityFactor,2) - 5/3 * probabilityFactor + 1;
+			float highProbability = 2/3 * Mathf.Pow(probabilityFactor,2) + 1/3 * probabilityFactor;
+			dieValue = Random.Range(0f, 1f);
+			if(dieValue < lowProbability)
+				intensityID = 0;
+			else if(dieValue >= lowProbability && dieValue <= highProbability)
+				intensityID = 1;
+			else
+				intensityID = 2;
+		} else {
+			//there are 2 possible color IDs
+			dieValue = Random.Range(0f, 1f);
+			if(lowestIntensityID == 0) {
+				//possible color IDs are 0 and 1
+				if(dieValue < 1-probabilityFactor)
+					intensityID = 0;
+				else
+					intensityID = 1;
+			} else {
+				//possible color IDs are 1 and 2
+				if(dieValue < 1-probabilityFactor)
+					intensityID = 1;
+				else
+					intensityID = 2;
+			}
+		}
+		return intensityID;
+	}
+	int GetClosestCentroidIndex(Vector2Int pixelPos, Vector2Int[] centroids, bool calcTempDiagram)
+	{
+		float smallestDst = float.MaxValue;
+		int nearestRegionID = 0;
+		int secondNearestRegionID = 0;
+
+		//find nearest region id
+		for(int i = 0; i < centroids.Length; i++)
+		{
+			//float distance = (Vector2.Distance(pixelPos, centroids[i]));
+			float distance = calcMinkowskiDistance(pixelPos, centroids[i], minkowskiLambda);
+			if (distance < smallestDst)
+			{
+				nearestRegionID = i;
+				smallestDst = distance;
+			}
+		}
+		tmp = false;
+
+		//find second nearest region id (determine neighboring regions)
+		smallestDst = float.MaxValue;
+		for(int i = 0; i < centroids.Length; i++)
+		{
+			if (i != nearestRegionID) {
+				//float distance = (Vector2.Distance(pixelPos, centroids[i]));
+				float distance = calcMinkowskiDistance(pixelPos, centroids[i], minkowskiLambda);
+				if (distance < smallestDst) {
+					secondNearestRegionID = i;
+					smallestDst = distance;
+				}
+			}
+		}
+
+		//add neighboring region, if not already contained
+		if (calcTempDiagram) {
+			if (!tempRegionNeighbors[nearestRegionID].Contains(secondNearestRegionID)) {
+				tempRegionNeighbors[nearestRegionID].Add(secondNearestRegionID);
+			}
+		} else {
+			if (!precRegionNeighbors[nearestRegionID].Contains(secondNearestRegionID)) {
+				precRegionNeighbors[nearestRegionID].Add(secondNearestRegionID);
+			}
+		}
+		return nearestRegionID;
+	}
+
+	//manhatten: p=1, euclidean: p=2
+	private float calcMinkowskiDistance(Vector2Int pointA, Vector2Int pointB, float lambda) {
+		return Mathf.Pow(Mathf.Pow(Mathf.Abs(pointA.x-pointB.x),lambda) + Mathf.Pow(Mathf.Abs(pointA.y-pointB.y),lambda), 1/lambda);
+	}
+
+	//Textures have to be same size
+	Texture2D MergeTextures(Texture2D firstTexture, Texture2D secondTexture) {
 		Color[] pixelColors = new Color[imageDim.x * imageDim.y];
 
 		int index = 0;
@@ -80,162 +240,22 @@ public class BiomeGenerator : MonoBehaviour
 		}
 
 		Texture2D mergedTexture = GetTextureFromColorArray(pixelColors);
-		Sprite mergedSprite = Sprite.Create(mergedTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
-		return mergedSprite;
+		return mergedTexture;
 	}
-	Texture2D GetDiagram(bool calcTemperatureDiagram)
+
+	//pixelIntensities has size xSize*ySize of the texture
+	//pixelIntensities has colors.size (3) distinct values
+	//colors: map intensityIDs to color values
+	public Texture2D GetTextureFromIntensityArray(int[] pixelIntensities, Dictionary<int, Color32> colors)
 	{
-		Vector2Int[] centroids = new Vector2Int[regionAmount];
-		for(int i = 0; i < regionAmount; i++)
-		{
-			centroids[i] = new Vector2Int(Random.Range(0, imageDim.x), Random.Range(0, imageDim.y));
+		Color[] pixelColors = new Color [pixelIntensities.Length];
+		for (int i = 0; i < pixelIntensities.Length; i++) {
+			pixelColors[i] = colors[pixelIntensities[i]];
 		}
-
-		int[] pixelRegions = new int[imageDim.x * imageDim.y];
-        int index = 0;
-		for(int y = 0; y < imageDim.y; y++)
-		{
-			for(int x = 0; x < imageDim.x; x++)
-			{
-				pixelRegions[index] = GetClosestCentroidIndex(new Vector2Int(x, y), centroids, calcTemperatureDiagram);
-                index++;
-			}
-		}
-
-		int[] regionColorIDs;
-		if (calcTemperatureDiagram) {
-			regionColorIDs = CalcRegionColorIDs(calcTemperatureDiagram, tempSprite_regionNeighbors);
-		} else {
-			regionColorIDs = CalcRegionColorIDs(calcTemperatureDiagram, precSprite_regionNeighbors);
-		}
-		
-
-		Color[] pixelColors = new Color[imageDim.x * imageDim.y];
-		int[] pixelColorIDs = new int [imageDim.x * imageDim.y];
-		for (int i = 0; i < pixelColors.Length; i++) {
-			int pixelColorID = regionColorIDs[pixelRegions[i]];
-			pixelColorIDs[i] = pixelColorID;
-			if (calcTemperatureDiagram) {
-				pixelColors[i] = temperatureColors[pixelColorID];
-			} else {
-				pixelColors[i] = precipitationColors[pixelColorID];
-			}
-		}
-		colorIDMaps.Add(pixelColorIDs);
 		return GetTextureFromColorArray(pixelColors);
 	}
 
-	int[] CalcRegionColorIDs(bool calcTemperatureDiagram, List<int>[] regionNeighbors) {
-		int[] regionColorIDs = new int[regionAmount];
-		for (int i = 0; i < regionAmount; i++) {
-			regionColorIDs[i] = -1;
-		}
-		for (int i = 0; i < regionAmount; i++) {
-			List<int> neighboringColorIDs = new List<int>();
-			for (int j = 0; j < regionNeighbors[i].Count; j++) {
-				int neighborID = regionNeighbors[i][j];
-				if (!neighboringColorIDs.Contains(regionColorIDs[neighborID])) {
-					neighboringColorIDs.Add(regionColorIDs[neighborID]);
-				}
-			}
-			if (!neighboringColorIDs.Contains(0) && !neighboringColorIDs.Contains(2)) {
-				regionColorIDs[i] = rollColorID(calcTemperatureDiagram, 0, 3);
-			} else if (!neighboringColorIDs.Contains(0) && neighboringColorIDs.Contains(2)) {
-				regionColorIDs[i] = rollColorID(calcTemperatureDiagram, 1, 3);
-			} else if (neighboringColorIDs.Contains(0) && !neighboringColorIDs.Contains(2)) {
-				regionColorIDs[i] = rollColorID(calcTemperatureDiagram, 0, 2);
-			} else {
-				regionColorIDs[i] = 1;
-			}
-		}
-		return regionColorIDs;
-	}
-
-	private int rollColorID(bool calcTemperatureDiagram, int lowestColorID, int highestColorID) {
-		float probabilityFactor;
-		if(calcTemperatureDiagram) {
-			probabilityFactor = averageTemperature;
-		} else {
-			probabilityFactor = averagePrecipitation;
-		}
-		float dieValue;
-		int colorIDRange = highestColorID - lowestColorID;
-		int colorID;
-		if(colorIDRange == 3) {
-			//there are 3 possible color IDs
-			//calculate probabilities from probabilityFactor with quadratic functions
-			float lowProbability = 2/3 * Mathf.Pow(probabilityFactor,2) - 5/3 * probabilityFactor + 1;
-			float highProbability = 2/3 * Mathf.Pow(probabilityFactor,2) + 1/3 * probabilityFactor;
-			dieValue = Random.Range(0f, 1f);
-			if(dieValue < lowProbability)
-				colorID = 0;
-			else if(dieValue >= lowProbability && dieValue <= highProbability)
-				colorID = 1;
-			else
-				colorID = 2;
-		} else {
-			//there are 2 possible color IDs
-			dieValue = Random.Range(0f, 1f);
-			if(lowestColorID == 0) {
-				//possible color IDs are 0 and 1
-				if(dieValue < 1-probabilityFactor)
-					colorID = 0;
-				else
-					colorID = 1;
-			} else {
-				//possible color IDs are 1 and 2
-				if(dieValue < 1-probabilityFactor)
-					colorID = 1;
-				else
-					colorID = 2;
-			}
-		}
-		return colorID;
-	}
-	int GetClosestCentroidIndex(Vector2Int pixelPos, Vector2Int[] centroids, bool calcTemperatureDiagram)
-	{
-		float smallestDst = float.MaxValue;
-		int nearestRegionID = 0;
-		int secondNearestRegionID = 0;
-
-		//find nearest region id
-		for(int i = 0; i < centroids.Length; i++)
-		{
-			float distance = (Vector2.Distance(pixelPos, centroids[i]));
-			if (distance < smallestDst)
-			{
-				nearestRegionID = i;
-				smallestDst = distance;
-			}
-		}
-
-		//find second nearest region id (determine neighboring regions)
-		smallestDst = float.MaxValue;
-		for(int i = 0; i < centroids.Length; i++)
-		{
-			if (i != nearestRegionID) {
-				float distance = (Vector2.Distance(pixelPos, centroids[i]));
-				if (distance < smallestDst) {
-					secondNearestRegionID = i;
-					smallestDst = distance;
-				}
-			}
-		}
-
-		//add neighboring region, if not already contained
-		if (calcTemperatureDiagram) {
-			if (!tempSprite_regionNeighbors[nearestRegionID].Contains(secondNearestRegionID)) {
-				tempSprite_regionNeighbors[nearestRegionID].Add(secondNearestRegionID);
-			}
-		} else {
-			if (!precSprite_regionNeighbors[nearestRegionID].Contains(secondNearestRegionID)) {
-				precSprite_regionNeighbors[nearestRegionID].Add(secondNearestRegionID);
-			}
-		}
-		return nearestRegionID;
-	}
-	public Texture2D GetTextureFromColorArray(Color[] pixelColors)
-	{
+	private Texture2D GetTextureFromColorArray(Color[] pixelColors) {
 		Texture2D tex = new Texture2D(imageDim.x, imageDim.y);
 		tex.filterMode = FilterMode.Point;
 		tex.SetPixels(pixelColors);
@@ -248,11 +268,11 @@ public class BiomeGenerator : MonoBehaviour
 	}
 
 	public Texture2D getTempTexture() {
-		return TemperatureMap.sprite.texture;
+		return TempMap.sprite.texture;
 	}
 
 	public Texture2D getPrecTexture() {
-		return PrecipitationMap.sprite.texture;
+		return PrecMap.sprite.texture;
 	}
 
 	public bool isBiomeTextureGenerated() {
