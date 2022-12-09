@@ -70,6 +70,72 @@ public class BiomeGenerator : MonoBehaviour
 		}
 	}
 
+	private Texture2D eliminateSmallRegions(Texture2D texture, int sizeLimit) {
+		Dictionary<Vector2Int, int> pixelRegions = new Dictionary<Vector2Int, int>();
+		//Dictionary<int, Color> regionColors = new Dictionary<int, Color>();
+		Texture2D resultTexture = texture;
+
+		int currentRegionID = 0;
+		for(int x = 0; x < texture.width; x++) {
+			for(int y = 0; y < texture.width; y++) {
+				Vector2Int currentPixel = new Vector2Int(x,y);
+				if(!pixelRegions.ContainsKey(currentPixel)) {
+					SortedSet<Vector2Int> currentRegion = findAllRegionMembers(currentPixel, new SortedSet<Vector2Int>());
+					foreach(Vector2Int pixel in currentRegion) {
+						pixelRegions.Add(pixel, currentRegionID);
+					}
+					currentRegionID++;
+				}
+			}
+		}
+
+		//WIP test if every pixel gets his correct region with findAllRegionMembers()
+		//#1 count which regions have less that sizeLimit pixels -> get their IDs as a set
+		//#2 iterate over all pixels -> for every pixel in too small region: determine next pixel that is not in set of too small regions -> get its color
+		//#3 in same iteration: repaint pixel
+		//#4 create new texture with new color array -> return
+
+		//recursive neighbor pixel check for region membership (same color) -> return 1 region as set of coordinates
+		SortedSet<Vector2Int> findAllRegionMembers(Vector2Int pixelPosition, SortedSet<Vector2Int> visitedPixel) {
+			Vector2Int rightPixel = new Vector2Int(pixelPosition.x + 1, pixelPosition.y);
+			Vector2Int upperPixel = new Vector2Int(pixelPosition.x, pixelPosition.y + 1);
+			Vector2Int leftPixel = new Vector2Int(pixelPosition.x - 1, pixelPosition.y);
+			Vector2Int lowerPixel = new Vector2Int(pixelPosition.x, pixelPosition.y - 1);
+			Color regionColor = texture.GetPixel(pixelPosition.x, pixelPosition.y);
+
+			if(!visitedPixel.Contains(pixelPosition))
+				visitedPixel.Add(pixelPosition);
+
+			SortedSet<Vector2Int> checkPixel(Vector2Int nextPixel, bool pixelFitsInTexture) {
+				SortedSet<Vector2Int> nextPixelMembers = new SortedSet<Vector2Int>();
+				if(		pixelFitsInTexture
+						&& texture.GetPixel(nextPixel.x,nextPixel.y).Equals(regionColor)
+						&& !visitedPixel.Contains(nextPixel)) {
+					nextPixelMembers = findAllRegionMembers(nextPixel, visitedPixel);
+					visitedPixel.Add(nextPixel);
+				}
+				return nextPixelMembers;
+			}
+
+			SortedSet<Vector2Int> rightPixelMembers = checkPixel(rightPixel, (rightPixel.x < texture.width));
+			SortedSet<Vector2Int> upperPixelMembers = checkPixel(upperPixel, (rightPixel.y < texture.height));
+			SortedSet<Vector2Int> leftPixelMembers = checkPixel(leftPixel, (rightPixel.x >= 0));
+			SortedSet<Vector2Int> lowerPixelMembers = checkPixel(lowerPixel, (rightPixel.y >= 0));
+
+			SortedSet<Vector2Int> regionMembers = new SortedSet<Vector2Int>();
+			regionMembers.UnionWith(rightPixelMembers);
+			regionMembers.UnionWith(upperPixelMembers);
+			regionMembers.UnionWith(leftPixelMembers);
+			regionMembers.UnionWith(lowerPixelMembers);
+
+			if(!regionMembers.Contains(pixelPosition)) {
+				regionMembers.Add(pixelPosition);
+			}
+			return regionMembers;
+		}
+		return resultTexture;
+	}
+
 	//calc voronoi diagram: array of intensity values (0-2)
 	private int[] calculateVoronoiDiagram(bool isTempDiagram) {
 		//roll centroids
