@@ -94,6 +94,8 @@ public class TerrainGenerator : MonoBehaviour
     private int meshWidth = 0;
     private float gradientMinValue = 0f;
     private float gradientMaxValue = 0f;
+    private Vector3[] terrainVertices;
+    private bool meshGenerated = false;
 
 
     Mesh terrainMesh;
@@ -111,6 +113,7 @@ public class TerrainGenerator : MonoBehaviour
         UpdateColorMap();
         SetPredefinedParameters();
         UpdateMesh();
+        meshGenerated = true;
     }
 
     void UpdateMesh()
@@ -135,7 +138,7 @@ public class TerrainGenerator : MonoBehaviour
 
     void CreateTerrainMesh()
     {
-        Vector3[] terrainVertices = new Vector3[(meshLength + 1)*(meshWidth + 1)];
+        terrainVertices = new Vector3[(meshLength + 1)*(meshWidth + 1)];
         terrainVertices = CalcVertexHeights(terrainVertices);
 
         int[] terrainTriangles = new int [meshLength * meshWidth * 6];
@@ -284,6 +287,8 @@ public class TerrainGenerator : MonoBehaviour
         return meshNodes;
     }
 
+
+
     void SetPredefinedParameters() {
         if (generateMountains) {
             currentLandscapeID = mountainsID;
@@ -354,5 +359,18 @@ public class TerrainGenerator : MonoBehaviour
     public float getMaxTerrainheight()
     {
         return maxTerrainHeight;
+    }
+
+    public Vector3[] getTerrainVertices() {
+        return terrainVertices;
+    }
+
+    //WIP: swap width and length!
+    public Vector2Int getMeshSize() {
+        return new Vector2Int(meshLength+1, meshWidth+1);
+    }
+
+    public bool isMeshGenerated() {
+        return meshGenerated;
     }
 }

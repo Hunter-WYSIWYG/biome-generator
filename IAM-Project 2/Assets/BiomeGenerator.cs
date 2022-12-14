@@ -6,7 +6,6 @@ using UnityEngine.UI;
 //credit for voronoi generator: UpGames: "Voronoi diagram tutorial in Unity3D(C#)" (https://www.youtube.com/watch?v=EDv69onIETk)
 public class BiomeGenerator : MonoBehaviour
 {
-    public Vector2Int imageDim;
 	public int regionAmount;
 	[Range(0,1)]
 	public float averageTemp = 0.5f;
@@ -17,7 +16,16 @@ public class BiomeGenerator : MonoBehaviour
 	public Image TempMap;
 	public Image PrecMap;
 	public Image BiomeMap;
+	//upper x percent of terrain that have a colder temperature
+	[Range(0f,1f)]
+	public float coldHeightsPercent = 0f;
 	public bool generateNewMap = true;
+	//eliminate regions that have a smaller size than width*height*eliminationSizeFactor
+	[Range(0f,0.1f)]
+	public float eliminationSizeFactor = 0.001f;
+	public bool eliminateSmallRegions = false;
+
+	public TerrainGenerator terrainGenerator;
 	private int[] tempIntensityArray;
 	private int[] precIntensityArray;
 
@@ -28,112 +36,211 @@ public class BiomeGenerator : MonoBehaviour
 
 	//Temp (0-2) & Prec (3-5) Colors
 	private Dictionary<int, Color32> tempColors = new Dictionary<int, Color32>(){
-		{0, new Color32(255, 255, 0, 255)},
-		{1, new Color32(255, 153, 51, 255)},
-		{2, new Color32(255, 0, 0, 255)}
+		{0, new Color32(255, 216, 40, 255)},
+		{1, new Color32(252, 114, 8, 255)},
+		{2, new Color32(204, 10, 10, 255)}
 	};
 	private Dictionary<int, Color32> precColors = new Dictionary<int, Color32>(){
 		{0, new Color32(153, 204, 255, 255)},
 		{1, new Color32(0, 153, 255, 255)},
-		{2, new Color32(0, 0, 255, 255)}
+		{2, new Color32(0, 80, 255, 255)}
 	};
-	private bool tmp = true;
+	private Texture2D biomeTexture;
+	private Vector2Int textureSize;
 
 	private void Update() {
-		if(generateNewMap) {
-			generateNewMap = false;
+		if(generateNewMap && terrainGenerator.isMeshGenerated()) {
+			textureSize = terrainGenerator.getMeshSize();
+			if(textureSize.x * textureSize.y > 0) {
+				generateNewMap = false;
 
-			//init region neighbor arrays
-			tempRegionNeighbors = new List<int>[regionAmount];
-			for (int i = 0; i < regionAmount; i++) {
-				tempRegionNeighbors[i] = new List<int>();
+				//init region neighbor arrays
+				tempRegionNeighbors = new List<int>[regionAmount];
+				for (int i = 0; i < regionAmount; i++) {
+					tempRegionNeighbors[i] = new List<int>();
+				}
+				precRegionNeighbors = new List<int>[regionAmount];
+				for (int i = 0; i < regionAmount; i++) {
+					precRegionNeighbors[i] = new List<int>();
+				}
+
+				//generate/set intensityArrays, textures, sprites
+				tempIntensityArray = calculateVoronoiDiagram(true);
+				tempIntensityArray = addMountainTemperatures(tempIntensityArray);
+				Texture2D tempTexture = GetTextureFromIntensityArray(tempIntensityArray, tempColors);
+				Sprite TempSprite = Sprite.Create(tempTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
+				TempMap.sprite = TempSprite;
+
+				precIntensityArray = calculateVoronoiDiagram(false);
+				Texture2D precTexture = GetTextureFromIntensityArray(precIntensityArray, precColors);
+				Sprite PrecSprite = Sprite.Create(precTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
+				PrecMap.sprite = PrecSprite;
+
+				biomeTexture = MergeTextures(tempTexture, precTexture);
+				BiomeMap.sprite = Sprite.Create(biomeTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
+				biomeGenerationFinished = true;
+			} else {
+				Debug.Log("Texture size too small");
 			}
-			precRegionNeighbors = new List<int>[regionAmount];
-			for (int i = 0; i < regionAmount; i++) {
-				precRegionNeighbors[i] = new List<int>();
-			}
+		}
 
-			//generate/set intensityArrays, textures, sprites
-			tempIntensityArray = calculateVoronoiDiagram(true);
-			Texture2D tempTexture = GetTextureFromIntensityArray(tempIntensityArray, tempColors);
-			Sprite TempSprite = Sprite.Create(tempTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
-			TempMap.sprite = TempSprite;
-
-			precIntensityArray = calculateVoronoiDiagram(false);
-			Texture2D precTexture = GetTextureFromIntensityArray(precIntensityArray, precColors);
-			Sprite PrecSprite = Sprite.Create(precTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
-			PrecMap.sprite = PrecSprite;
-
-			Texture2D biomeTexture = MergeTextures(tempTexture, precTexture);
-			BiomeMap.sprite = Sprite.Create(biomeTexture, new Rect(0, 0, imageDim.x, imageDim.y), Vector2.one * 0.5f);
-			biomeGenerationFinished = true;
+		if(eliminateSmallRegions && biomeGenerationFinished) {
+			eliminateSmallRegions = false;
+			float startTime = Time.realtimeSinceStartup;
+			biomeTexture = EliminateSmallRegions(biomeTexture, eliminationSizeFactor);
+			float endtime = Time.realtimeSinceStartup;
+			BiomeMap.sprite = Sprite.Create(biomeTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
 		}
 	}
 
-	private Texture2D eliminateSmallRegions(Texture2D texture, int sizeLimit) {
+	//WIP rainshadows for mountains: give direction (e.g. 180°) + height border (float) (maybe same as coldheights?) -> more rain north of mountain + less rain south of mountain
+	int[] addMountainTemperatures(int[] intensityArray) {
+		Vector3[] terrainVertices = terrainGenerator.getTerrainVertices();
+		float maxHeight = terrainGenerator.getMaxTerrainheight();
+		float minHeight = terrainGenerator.getMinTerrainheight();
+		Vector2Int meshSize = terrainGenerator.getMeshSize();
+
+		float coldHeightsBorder = maxHeight - ((maxHeight - minHeight) * coldHeightsPercent);
+
+		for(int meshY = 0; meshY < meshSize.y; meshY++) {
+			for(int meshX = 0; meshX < meshSize.x; meshX++) {
+				int meshIndex = meshX + meshY * meshSize.x;
+				if(meshX < textureSize.x && meshY < textureSize.y && terrainVertices[meshIndex].y > coldHeightsBorder) {
+					int textureX = meshIndex % meshSize.x;
+					int textureY = Mathf.FloorToInt(meshIndex / meshSize.x);
+					int textureIndex = textureX + textureY * textureSize.x;
+					intensityArray[textureIndex] = Mathf.Max(intensityArray[textureIndex] - 1, 0);
+				}
+			}
+		}
+		return intensityArray;
+	}
+
+	private Texture2D EliminateSmallRegions(Texture2D texture, float eliminationSizeFactor) {
 		Dictionary<Vector2Int, int> pixelRegions = new Dictionary<Vector2Int, int>();
-		//Dictionary<int, Color> regionColors = new Dictionary<int, Color>();
-		Texture2D resultTexture = texture;
-
-		int currentRegionID = 0;
+		
+		int regionCount = 0;
+		Dictionary<int, int> regionSizes = new Dictionary<int, int>(); //regionID, regionSize
 		for(int x = 0; x < texture.width; x++) {
-			for(int y = 0; y < texture.width; y++) {
-				Vector2Int currentPixel = new Vector2Int(x,y);
-				if(!pixelRegions.ContainsKey(currentPixel)) {
-					SortedSet<Vector2Int> currentRegion = findAllRegionMembers(currentPixel, new SortedSet<Vector2Int>());
-					foreach(Vector2Int pixel in currentRegion) {
-						pixelRegions.Add(pixel, currentRegionID);
+			for(int y = 0; y < texture.height; y++) {
+				Vector2Int startingPixel = new Vector2Int(x,y);
+				if(!pixelRegions.ContainsKey(startingPixel)) {
+					regionSizes.Add(regionCount, 0);
+					List<Vector2Int> pixelsToCheck = new List<Vector2Int>();
+					pixelsToCheck.Add(startingPixel);
+
+					while(pixelsToCheck.Count > 0) {
+						Vector2Int currentPixel = pixelsToCheck[0];
+						pixelsToCheck.RemoveAt(0);
+						if(isPixelInTexture(currentPixel) && isPixelColorEqual(startingPixel, currentPixel) && !pixelRegions.ContainsKey(currentPixel)) {
+							pixelRegions.Add(currentPixel, regionCount);
+							regionSizes[regionCount]++;
+							pixelsToCheck.Add(new Vector2Int(currentPixel.x+1, currentPixel.y));
+							pixelsToCheck.Add(new Vector2Int(currentPixel.x-1, currentPixel.y));
+							pixelsToCheck.Add(new Vector2Int(currentPixel.x, currentPixel.y+1));
+							pixelsToCheck.Add(new Vector2Int(currentPixel.x, currentPixel.y-1));
+						}
 					}
-					currentRegionID++;
+					regionCount++;
 				}
 			}
 		}
 
-		//WIP test if every pixel gets his correct region with findAllRegionMembers()
-		//#1 count which regions have less that sizeLimit pixels -> get their IDs as a set
-		//#2 iterate over all pixels -> for every pixel in too small region: determine next pixel that is not in set of too small regions -> get its color
-		//#3 in same iteration: repaint pixel
-		//#4 create new texture with new color array -> return
-
-		//recursive neighbor pixel check for region membership (same color) -> return 1 region as set of coordinates
-		SortedSet<Vector2Int> findAllRegionMembers(Vector2Int pixelPosition, SortedSet<Vector2Int> visitedPixel) {
-			Vector2Int rightPixel = new Vector2Int(pixelPosition.x + 1, pixelPosition.y);
-			Vector2Int upperPixel = new Vector2Int(pixelPosition.x, pixelPosition.y + 1);
-			Vector2Int leftPixel = new Vector2Int(pixelPosition.x - 1, pixelPosition.y);
-			Vector2Int lowerPixel = new Vector2Int(pixelPosition.x, pixelPosition.y - 1);
-			Color regionColor = texture.GetPixel(pixelPosition.x, pixelPosition.y);
-
-			if(!visitedPixel.Contains(pixelPosition))
-				visitedPixel.Add(pixelPosition);
-
-			SortedSet<Vector2Int> checkPixel(Vector2Int nextPixel, bool pixelFitsInTexture) {
-				SortedSet<Vector2Int> nextPixelMembers = new SortedSet<Vector2Int>();
-				if(		pixelFitsInTexture
-						&& texture.GetPixel(nextPixel.x,nextPixel.y).Equals(regionColor)
-						&& !visitedPixel.Contains(nextPixel)) {
-					nextPixelMembers = findAllRegionMembers(nextPixel, visitedPixel);
-					visitedPixel.Add(nextPixel);
-				}
-				return nextPixelMembers;
+		Vector2Int biggestRegion = new Vector2Int(-1,0); //regionID, regionSize
+		Vector2Int secondBiggestRegion = new Vector2Int(-1,0); //regionID, regionSize
+		foreach(KeyValuePair<int, int> regionSize in regionSizes) {
+			if(regionSize.Value > biggestRegion.y) {
+				secondBiggestRegion = biggestRegion;
+				biggestRegion.x = regionSize.Key;
+				biggestRegion.y = regionSize.Value;
+			} else if(regionSize.Value > secondBiggestRegion.y) {
+				secondBiggestRegion.x = regionSize.Key;
+				secondBiggestRegion.y = regionSize.Value;
 			}
-
-			SortedSet<Vector2Int> rightPixelMembers = checkPixel(rightPixel, (rightPixel.x < texture.width));
-			SortedSet<Vector2Int> upperPixelMembers = checkPixel(upperPixel, (rightPixel.y < texture.height));
-			SortedSet<Vector2Int> leftPixelMembers = checkPixel(leftPixel, (rightPixel.x >= 0));
-			SortedSet<Vector2Int> lowerPixelMembers = checkPixel(lowerPixel, (rightPixel.y >= 0));
-
-			SortedSet<Vector2Int> regionMembers = new SortedSet<Vector2Int>();
-			regionMembers.UnionWith(rightPixelMembers);
-			regionMembers.UnionWith(upperPixelMembers);
-			regionMembers.UnionWith(leftPixelMembers);
-			regionMembers.UnionWith(lowerPixelMembers);
-
-			if(!regionMembers.Contains(pixelPosition)) {
-				regionMembers.Add(pixelPosition);
-			}
-			return regionMembers;
 		}
-		return resultTexture;
+		int secondBiggestRegionSize = secondBiggestRegion.y;
+		int minRegionSize = Mathf.Min(Mathf.RoundToInt(texture.width * texture.height * eliminationSizeFactor),secondBiggestRegionSize);
+		List<int> regionsToEliminate = new List<int>();
+		for(int i = 0; i < regionSizes.Count; i++) {
+			if(regionSizes[i] < minRegionSize) {
+				regionsToEliminate.Add(i);
+			}
+		}
+
+		Color[] resultColorArray = new Color [texture.width * texture.height];
+		for(int y = 0; y < texture.height; y++) {
+			for(int x = 0; x < texture.width; x++) {
+				Vector2Int pixel = new Vector2Int(x,y);
+				int pixelRegion = pixelRegions[pixel];
+				if(regionsToEliminate.Contains(pixelRegion)) {
+					resultColorArray[y*texture.width + x] = determineNewPixelColor(pixel);
+				} else {
+					resultColorArray[y*texture.width + x] = texture.GetPixel(pixel.x, pixel.y);
+				}
+			}
+		}
+
+		//end of function
+		return GetTextureFromColorArray(resultColorArray);
+
+
+		//some helper functions:
+
+		//get nearest pixelcolor in neighborhood that should not be removed
+		Color determineNewPixelColor(Vector2Int pixel) {
+			int maxDistanceFromPixel = Mathf.Max(texture.width, texture.height);
+			Vector2Int upperPixel = new Vector2Int(pixel.x, pixel.y+1);
+			Vector2Int rightPixel = new Vector2Int(pixel.x+1, pixel.y);
+			Vector2Int lowerPixel = new Vector2Int(pixel.x, pixel.y-1);
+			Vector2Int leftPixel = new Vector2Int(pixel.x-1, pixel.y);
+
+			//check closest (distance 1) in 4er neighborhood
+			if(hasPossibleColor(upperPixel))
+				return texture.GetPixel(upperPixel.x, upperPixel.y);
+			if(hasPossibleColor(rightPixel))
+				return texture.GetPixel(rightPixel.x, rightPixel.y);
+			if(hasPossibleColor(lowerPixel))
+				return texture.GetPixel(lowerPixel.x, lowerPixel.y);
+			if(hasPossibleColor(leftPixel))
+				return texture.GetPixel(leftPixel.x, leftPixel.y);
+
+			//check rest in growing circles around pixel
+			for(int distance = 2; distance < maxDistanceFromPixel; distance++) {
+				for(int xOffset = -distance; xOffset <= distance; xOffset++) {
+					Vector2Int pixelToCheck = new Vector2Int(pixel.x + xOffset, pixel.y + distance);
+					if(hasPossibleColor(pixelToCheck))
+						return texture.GetPixel(pixelToCheck.x, pixelToCheck.y);
+				}
+				for(int yOffset = 1-distance; yOffset <= -1+distance; yOffset++) {
+					Vector2Int pixelToCheck = new Vector2Int(pixel.x + distance, pixel.y + yOffset);
+					if(hasPossibleColor(pixelToCheck))
+						return texture.GetPixel(pixelToCheck.x, pixelToCheck.y);
+				}
+				for(int xOffset = -distance; xOffset <= distance; xOffset++) {
+					Vector2Int pixelToCheck = new Vector2Int(pixel.x + xOffset, pixel.y - distance);
+					if(hasPossibleColor(pixelToCheck))
+						return texture.GetPixel(pixelToCheck.x, pixelToCheck.y);
+				}
+				for(int yOffset = 1-distance; yOffset <= -1+distance; yOffset++) {
+					Vector2Int pixelToCheck = new Vector2Int(pixel.x - distance, pixel.y + yOffset);
+					if(hasPossibleColor(pixelToCheck))
+						return texture.GetPixel(pixelToCheck.x, pixelToCheck.y);
+				}
+			}
+			return Color.white;
+
+			bool hasPossibleColor(Vector2Int pixelToCheck) {
+				return isPixelInTexture(pixelToCheck) && !regionsToEliminate.Contains(pixelRegions[pixelToCheck]);
+			}
+		}
+
+		bool isPixelInTexture(Vector2Int pixel) {
+			return (pixel.x >= 0 && pixel.x < texture.width && pixel.y >= 0 && pixel.y < texture.height);
+		}
+
+		bool isPixelColorEqual(Vector2Int pixel1, Vector2Int pixel2) {
+			return texture.GetPixel(pixel1.x, pixel1.y) == texture.GetPixel(pixel2.x, pixel2.y);
+		}
 	}
 
 	//calc voronoi diagram: array of intensity values (0-2)
@@ -142,15 +249,15 @@ public class BiomeGenerator : MonoBehaviour
 		Vector2Int[] centroids = new Vector2Int[regionAmount];
 		for(int i = 0; i < regionAmount; i++)
 		{
-			centroids[i] = new Vector2Int(Random.Range(0, imageDim.x), Random.Range(0, imageDim.y));
+			centroids[i] = new Vector2Int(Random.Range(0, textureSize.x), Random.Range(0, textureSize.y));
 		}
 		
 		//determine region id of each pixel
-		int[] pixelRegions = new int[imageDim.x * imageDim.y];
+		int[] pixelRegions = new int[textureSize.x * textureSize.y];
         int index = 0;
-		for(int y = 0; y < imageDim.y; y++)
+		for(int y = 0; y < textureSize.y; y++)
 		{
-			for(int x = 0; x < imageDim.x; x++)
+			for(int x = 0; x < textureSize.x; x++)
 			{
 				pixelRegions[index] = GetClosestCentroidIndex(new Vector2Int(x, y), centroids, isTempDiagram);
                 index++;
@@ -165,8 +272,8 @@ public class BiomeGenerator : MonoBehaviour
 			regionIntensityIDs = CalcRegionIntensityIDs(isTempDiagram, precRegionNeighbors);
 		}
 		
-		//
-		int[] pixelIntensityIDs = new int [imageDim.x * imageDim.y];
+		//determine intensity id for every pixel
+		int[] pixelIntensityIDs = new int [textureSize.x * textureSize.y];
 		for (int i = 0; i < pixelIntensityIDs.Length; i++) {
 			int pixelIntensityID = regionIntensityIDs[pixelRegions[i]];
 			pixelIntensityIDs[i] = pixelIntensityID;
@@ -257,7 +364,6 @@ public class BiomeGenerator : MonoBehaviour
 				smallestDst = distance;
 			}
 		}
-		tmp = false;
 
 		//find second nearest region id (determine neighboring regions)
 		smallestDst = float.MaxValue;
@@ -293,14 +399,15 @@ public class BiomeGenerator : MonoBehaviour
 
 	//Textures have to be same size
 	Texture2D MergeTextures(Texture2D firstTexture, Texture2D secondTexture) {
-		Color[] pixelColors = new Color[imageDim.x * imageDim.y];
+		Color[] pixelColors = new Color[textureSize.x * textureSize.y];
 
 		int index = 0;
-		for (int y = 0; y < imageDim.y; y++) {
-			for (int x = 0; x < imageDim.x; x++) {
+		for (int y = 0; y < textureSize.y; y++) {
+			for (int x = 0; x < textureSize.x; x++) {
 				Color firstColor = firstTexture.GetPixel(x,y);
 				Color secondColor = secondTexture.GetPixel(x,y);
-				pixelColors[index] = mergeColors(firstColor, secondColor, 0.5f);
+				Color mergedColor = mergeColors(firstColor, secondColor, 0.5f);
+				pixelColors[index] = addToSaturation(mergedColor, 0.5f);
 				index++;
 			}
 		}
@@ -322,7 +429,7 @@ public class BiomeGenerator : MonoBehaviour
 	}
 
 	private Texture2D GetTextureFromColorArray(Color[] pixelColors) {
-		Texture2D tex = new Texture2D(imageDim.x, imageDim.y);
+		Texture2D tex = new Texture2D(textureSize.x, textureSize.y);
 		tex.filterMode = FilterMode.Point;
 		tex.SetPixels(pixelColors);
 		tex.Apply();
@@ -347,5 +454,11 @@ public class BiomeGenerator : MonoBehaviour
 
 	public Color mergeColors(Color color1, Color color2, float mergeProportions) {
 		return Color.Lerp(color1, color2, Mathf.Clamp(mergeProportions, 0f, 1f));
+	}
+
+	public Color addToSaturation(Color color, float satAddition) {
+		Vector3 hsvColor = new Vector3(0,0,0);
+		Color.RGBToHSV(color, out hsvColor.x, out hsvColor.y, out hsvColor.z);
+		return Color.HSVToRGB(hsvColor.x, Mathf.Min(hsvColor.y+satAddition, 1f), hsvColor.z);
 	}
 }
