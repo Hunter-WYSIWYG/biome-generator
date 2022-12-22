@@ -29,7 +29,7 @@ public class WaterGenerator : MonoBehaviour
     {
         relativeWaterHeight = TerrainGenerator.relativeWaterHeight;
         meshLength = TerrainGenerator.terrainLenght;
-        meshWidth = TerrainGenerator.terrainWidth;
+        meshWidth = TerrainGenerator.terrainDepth;
         minTerrainHeight = TerrainGenerator.getMinTerrainheight();
         maxTerrainHeight = TerrainGenerator.getMaxTerrainheight();
         waterPlaneColor = TerrainGenerator.waterPlaneColor;

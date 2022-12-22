@@ -7,7 +7,7 @@ public class TerrainGenerator : MonoBehaviour
 {
     [Header("Base Settings")]
     public int terrainLenght = 100;
-    public int terrainWidth = 100;
+    public int terrainDepth = 100;
     public bool generateMountains = false;
     public bool generateIslands = false;
 
@@ -91,7 +91,7 @@ public class TerrainGenerator : MonoBehaviour
     private float minTerrainHeight = 0f;
     private float maxTerrainHeight = 0f;
     private int meshLength = 0;
-    private int meshWidth = 0;
+    private int meshDepth = 0;
     private float gradientMinValue = 0f;
     private float gradientMaxValue = 0f;
     private Vector3[] terrainVertices;
@@ -120,7 +120,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         //add necessary nodes to close terrain edges
         meshLength = terrainLenght + 2;
-        meshWidth = terrainWidth + 2;
+        meshDepth = terrainDepth + 2;
 
         //update terrain mesh
         CreateTerrainMesh();
@@ -138,13 +138,13 @@ public class TerrainGenerator : MonoBehaviour
 
     void CreateTerrainMesh()
     {
-        terrainVertices = new Vector3[(meshLength + 1)*(meshWidth + 1)];
+        terrainVertices = new Vector3[(meshLength + 1)*(meshDepth + 1)];
         terrainVertices = CalcVertexHeights(terrainVertices);
 
-        int[] terrainTriangles = new int [meshLength * meshWidth * 6];
+        int[] terrainTriangles = new int [meshLength * meshDepth * 6];
         int currentVertex = 0;
         int currentTriangles = 0;
-        for (int z = 0; z < meshWidth; z++)
+        for (int z = 0; z < meshDepth; z++)
         {
             for (int x = 0; x < meshLength; x++)
             {
@@ -171,7 +171,7 @@ public class TerrainGenerator : MonoBehaviour
 
         bool noTextureAvailable = !biomeGenerator.isBiomeTextureGenerated();
         int index = 0;
-        for (int z = 0; z <= meshWidth; z++)
+        for (int z = 0; z <= meshDepth; z++)
         {
             for (int x = 0; x <= meshLength; x++)
             {
@@ -203,7 +203,7 @@ public class TerrainGenerator : MonoBehaviour
 
     Vector3[] CalcVertexHeights(Vector3[] meshNodes)
     {
-        for (int i = 0, z = 0; z <= meshWidth; z++)
+        for (int i = 0, z = 0; z <= meshDepth; z++)
         {
             for (int x = 0; x <= meshLength; x++)
             {
@@ -279,7 +279,7 @@ public class TerrainGenerator : MonoBehaviour
             if (zCoord == 0) {
                 meshNodes[i] = new Vector3(Mathf.Clamp(xCoord, 0, meshLength-1), minTerrainHeight, zCoord+1);
             }
-            if (zCoord == meshWidth) {
+            if (zCoord == meshDepth) {
                 meshNodes[i] = new Vector3(Mathf.Clamp(xCoord, 1, meshLength), minTerrainHeight, zCoord-1);
             }
         }
@@ -365,9 +365,8 @@ public class TerrainGenerator : MonoBehaviour
         return terrainVertices;
     }
 
-    //WIP: swap width and length!
     public Vector2Int getMeshSize() {
-        return new Vector2Int(meshLength+1, meshWidth+1);
+        return new Vector2Int(meshLength+1, meshDepth+1);
     }
 
     public bool isMeshGenerated() {

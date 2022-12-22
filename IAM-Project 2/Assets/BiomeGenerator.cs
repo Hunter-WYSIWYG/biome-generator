@@ -12,10 +12,6 @@ public class BiomeGenerator : MonoBehaviour
 	[Range(0,1)]
 	public float averagePrec = 0.5f;
 	public float minkowskiLambda = 3f;
-
-	public Image TempMap;
-	public Image PrecMap;
-	public Image BiomeMap;
 	//upper x percent of terrain that have a colder temperature
 	[Range(0f,1f)]
 	public float coldHeightsPercent = 0f;
@@ -24,8 +20,16 @@ public class BiomeGenerator : MonoBehaviour
 	[Range(0f,0.1f)]
 	public float eliminationSizeFactor = 0.001f;
 	public bool eliminateSmallRegions = false;
-
+	public bool openBiomeSprite = false;
+	public enum WizardState {TempEdit, PrecEdit, BiomeEdit, TerrainView};
+	public WizardState wizardState = WizardState.TempEdit;
 	public TerrainGenerator terrainGenerator;
+	public GameObject tempSprite;
+	public GameObject precSprite;
+	public GameObject biomeSprite;
+	public GameObject spriteCam;
+	public GameObject terrainCam;
+
 	private int[] tempIntensityArray;
 	private int[] precIntensityArray;
 
@@ -35,25 +39,35 @@ public class BiomeGenerator : MonoBehaviour
 	private List<int>[] precRegionNeighbors;
 
 	//Temp (0-2) & Prec (3-5) Colors
-	private Dictionary<int, Color32> tempColors = new Dictionary<int, Color32>(){
+	private Dictionary<int, Color32> tempColors = new Dictionary<int, Color32>() {
 		{0, new Color32(255, 216, 40, 255)},
 		{1, new Color32(252, 114, 8, 255)},
 		{2, new Color32(204, 10, 10, 255)}
 	};
-	private Dictionary<int, Color32> precColors = new Dictionary<int, Color32>(){
+	private Dictionary<int, Color32> precColors = new Dictionary<int, Color32>() {
 		{0, new Color32(153, 204, 255, 255)},
 		{1, new Color32(0, 153, 255, 255)},
 		{2, new Color32(0, 80, 255, 255)}
 	};
 	private Texture2D biomeTexture;
+	private Texture2D tempTexture;
+	private Texture2D precTexture;
 	private Vector2Int textureSize;
+	private WizardState currentWizardState;
+
+	void Start() {
+		generateNewMap = true;
+		currentWizardState = WizardState.TerrainView;
+	}
 
 	private void Update() {
+		controlSpriteWizard();
+
 		if(generateNewMap && terrainGenerator.isMeshGenerated()) {
 			textureSize = terrainGenerator.getMeshSize();
-			if(textureSize.x * textureSize.y > 0) {
-				generateNewMap = false;
+			generateNewMap = false;
 
+			if(textureSize.x * textureSize.y > 0) {
 				//init region neighbor arrays
 				tempRegionNeighbors = new List<int>[regionAmount];
 				for (int i = 0; i < regionAmount; i++) {
@@ -67,17 +81,15 @@ public class BiomeGenerator : MonoBehaviour
 				//generate/set intensityArrays, textures, sprites
 				tempIntensityArray = calculateVoronoiDiagram(true);
 				tempIntensityArray = addMountainTemperatures(tempIntensityArray);
-				Texture2D tempTexture = GetTextureFromIntensityArray(tempIntensityArray, tempColors);
-				Sprite TempSprite = Sprite.Create(tempTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
-				TempMap.sprite = TempSprite;
+				tempTexture = GetTextureFromIntensityArray(tempIntensityArray, tempColors);
+				tempSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(tempTexture);
 
 				precIntensityArray = calculateVoronoiDiagram(false);
-				Texture2D precTexture = GetTextureFromIntensityArray(precIntensityArray, precColors);
-				Sprite PrecSprite = Sprite.Create(precTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
-				PrecMap.sprite = PrecSprite;
+				precTexture = GetTextureFromIntensityArray(precIntensityArray, precColors);
+				precSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(precTexture);
 
-				biomeTexture = MergeTextures(tempTexture, precTexture);
-				BiomeMap.sprite = Sprite.Create(biomeTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
+				biomeTexture = addSaturationToTexture(MergeTextures(tempTexture, precTexture), 0.5f);
+				biomeSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(biomeTexture);
 				biomeGenerationFinished = true;
 			} else {
 				Debug.Log("Texture size too small");
@@ -86,10 +98,137 @@ public class BiomeGenerator : MonoBehaviour
 
 		if(eliminateSmallRegions && biomeGenerationFinished) {
 			eliminateSmallRegions = false;
-			float startTime = Time.realtimeSinceStartup;
 			biomeTexture = EliminateSmallRegions(biomeTexture, eliminationSizeFactor);
-			float endtime = Time.realtimeSinceStartup;
-			BiomeMap.sprite = Sprite.Create(biomeTexture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
+			biomeSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(biomeTexture);
+		}
+
+		if(openBiomeSprite && biomeGenerationFinished) {
+			openBiomeSprite = false;
+			List<Color> currentBiomeColors = determineBiomeColors(biomeTexture);
+			biomeTexture = openTexture(currentBiomeColors, biomeTexture);
+			biomeSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(biomeTexture);
+		}
+	}
+
+	List<Color> determineBiomeColors(Texture2D biomeTexture) {
+		List<Color> biomeColors = new List<Color>();
+		for(int y = 0; y < biomeTexture.height; y++) {
+			for(int x = 0; x < biomeTexture.width; x++) {
+				Color pixelColor = biomeTexture.GetPixel(x,y);
+				if(!biomeColors.Contains(pixelColor)) {
+					biomeColors.Add(pixelColor);
+				}
+			}
+		}
+		return biomeColors;
+	}
+
+	Texture2D openTexture(List<Color> imageColors, Texture2D texture) {
+		foreach(Color color in imageColors) {
+			texture = erodeTexture(color, texture);
+			texture = dilateTexture(color, texture);
+		}
+		return texture;
+	}
+
+	Texture2D erodeTexture(Color erosionColor, Texture2D texture) {
+		Texture2D resultTexture = new Texture2D(textureSize.x, textureSize.y);
+		resultTexture.filterMode = FilterMode.Point;
+		for(int y = 0; y < textureSize.y; y++) {
+			for(int x = 0; x < textureSize.x; x++) {
+				resultTexture.SetPixel(x,y,texture.GetPixel(x,y));
+			}
+		}
+		
+		List<Color> tmp = new List<Color>();
+		for(int y = 0; y < textureSize.y; y++) {
+			for(int x = 0; x < textureSize.x; x++) {
+				if(!tmp.Contains(texture.GetPixel(x,y))) {
+					tmp.Add(texture.GetPixel(x,y));
+				}
+				if(texture.GetPixel(x,y) == erosionColor) {
+					if(x-1 >= 0 && texture.GetPixel(x-1,y) != erosionColor) {
+						resultTexture.SetPixel(x,y,texture.GetPixel(x-1,y));
+					} else if(x+1 < textureSize.x && texture.GetPixel(x+1,y) != erosionColor) {
+						resultTexture.SetPixel(x,y,texture.GetPixel(x+1,y));
+					} else if(y-1 >= 0 && texture.GetPixel(x,y-1) != erosionColor) {
+						resultTexture.SetPixel(x,y,texture.GetPixel(x,y-1));
+					} else if(y+1 < textureSize.y && texture.GetPixel(x,y+1) != erosionColor) {
+						resultTexture.SetPixel(x,y,texture.GetPixel(x,y+1));
+					}
+				}
+			}
+		}
+		resultTexture.Apply();
+		return resultTexture;
+	}
+
+	Texture2D dilateTexture(Color dilatationColor, Texture2D texture) {
+		Texture2D resultTexture = new Texture2D(textureSize.x, textureSize.y);
+		resultTexture.filterMode = FilterMode.Point;
+		for(int y = 0; y < textureSize.y; y++) {
+			for(int x = 0; x < textureSize.x; x++) {
+				resultTexture.SetPixel(x,y,texture.GetPixel(x,y));
+			}
+		}
+
+		for(int y = 0; y < textureSize.y; y++) {
+			for(int x = 0; x < textureSize.x; x++) {
+				if(texture.GetPixel(x,y) != dilatationColor) {
+					if(x-1 > 0 && texture.GetPixel(x-1,y) == dilatationColor) {
+						resultTexture.SetPixel(x,y,dilatationColor);
+					} else if(x+1 < textureSize.x && texture.GetPixel(x+1,y) == dilatationColor) {
+						resultTexture.SetPixel(x,y,dilatationColor);
+					} else if(y-1 > 0 && texture.GetPixel(x,y-1) == dilatationColor) {
+						resultTexture.SetPixel(x,y,dilatationColor);
+					} else if(y+1 < textureSize.y && texture.GetPixel(x,y+1) == dilatationColor) {
+						resultTexture.SetPixel(x,y,dilatationColor);
+					}
+				}
+			}
+		}
+		resultTexture.Apply();
+		return resultTexture;
+	}
+
+	void controlSpriteWizard() {
+		if(wizardState != currentWizardState) {
+			currentWizardState = wizardState;
+			switch (wizardState) {
+				case WizardState.TempEdit:
+					terrainCam.SetActive(false);
+					spriteCam.SetActive(true);
+					tempSprite.SetActive(true);
+					precSprite.SetActive(false);
+					biomeSprite.SetActive(false);
+					tempSprite.GetComponent<FreeDraw.Drawable>().setPenColor(tempColors[0]);
+					break;
+				case WizardState.PrecEdit:
+					terrainCam.SetActive(false);
+					spriteCam.SetActive(true);
+					tempSprite.SetActive(false);
+					precSprite.SetActive(true);
+					biomeSprite.SetActive(false);
+					tempSprite.GetComponent<FreeDraw.Drawable>().setPenColor(precColors[0]);
+					break;
+				case WizardState.BiomeEdit:
+					biomeTexture = addSaturationToTexture(MergeTextures(tempTexture, precTexture), 0.5f);
+					biomeSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(biomeTexture);
+					terrainCam.SetActive(false);
+					spriteCam.SetActive(true);
+					tempSprite.SetActive(false);
+					precSprite.SetActive(false);
+					biomeSprite.SetActive(true);
+					tempSprite.GetComponent<FreeDraw.Drawable>().setPenColor(biomeTexture.GetPixel(0,0));
+					break;
+				case WizardState.TerrainView:
+					spriteCam.SetActive(false);
+					terrainCam.SetActive(true);
+					tempSprite.SetActive(false);
+					precSprite.SetActive(false);
+					biomeSprite.SetActive(false);
+					break;
+			}
 		}
 	}
 
@@ -121,8 +260,8 @@ public class BiomeGenerator : MonoBehaviour
 		
 		int regionCount = 0;
 		Dictionary<int, int> regionSizes = new Dictionary<int, int>(); //regionID, regionSize
-		for(int x = 0; x < texture.width; x++) {
-			for(int y = 0; y < texture.height; y++) {
+		for(int x = 0; x < textureSize.x; x++) {
+			for(int y = 0; y < textureSize.y; y++) {
 				Vector2Int startingPixel = new Vector2Int(x,y);
 				if(!pixelRegions.ContainsKey(startingPixel)) {
 					regionSizes.Add(regionCount, 0);
@@ -159,7 +298,7 @@ public class BiomeGenerator : MonoBehaviour
 			}
 		}
 		int secondBiggestRegionSize = secondBiggestRegion.y;
-		int minRegionSize = Mathf.Min(Mathf.RoundToInt(texture.width * texture.height * eliminationSizeFactor),secondBiggestRegionSize);
+		int minRegionSize = Mathf.Min(Mathf.RoundToInt(textureSize.x * textureSize.y * eliminationSizeFactor),secondBiggestRegionSize);
 		List<int> regionsToEliminate = new List<int>();
 		for(int i = 0; i < regionSizes.Count; i++) {
 			if(regionSizes[i] < minRegionSize) {
@@ -167,15 +306,15 @@ public class BiomeGenerator : MonoBehaviour
 			}
 		}
 
-		Color[] resultColorArray = new Color [texture.width * texture.height];
-		for(int y = 0; y < texture.height; y++) {
-			for(int x = 0; x < texture.width; x++) {
+		Color[] resultColorArray = new Color [textureSize.x * textureSize.y];
+		for(int y = 0; y < textureSize.y; y++) {
+			for(int x = 0; x < textureSize.x; x++) {
 				Vector2Int pixel = new Vector2Int(x,y);
 				int pixelRegion = pixelRegions[pixel];
 				if(regionsToEliminate.Contains(pixelRegion)) {
-					resultColorArray[y*texture.width + x] = determineNewPixelColor(pixel);
+					resultColorArray[y*textureSize.x + x] = determineNewPixelColor(pixel);
 				} else {
-					resultColorArray[y*texture.width + x] = texture.GetPixel(pixel.x, pixel.y);
+					resultColorArray[y*textureSize.x + x] = texture.GetPixel(pixel.x, pixel.y);
 				}
 			}
 		}
@@ -188,7 +327,7 @@ public class BiomeGenerator : MonoBehaviour
 
 		//get nearest pixelcolor in neighborhood that should not be removed
 		Color determineNewPixelColor(Vector2Int pixel) {
-			int maxDistanceFromPixel = Mathf.Max(texture.width, texture.height);
+			int maxDistanceFromPixel = Mathf.Max(textureSize.x, textureSize.y);
 			Vector2Int upperPixel = new Vector2Int(pixel.x, pixel.y+1);
 			Vector2Int rightPixel = new Vector2Int(pixel.x+1, pixel.y);
 			Vector2Int lowerPixel = new Vector2Int(pixel.x, pixel.y-1);
@@ -235,7 +374,7 @@ public class BiomeGenerator : MonoBehaviour
 		}
 
 		bool isPixelInTexture(Vector2Int pixel) {
-			return (pixel.x >= 0 && pixel.x < texture.width && pixel.y >= 0 && pixel.y < texture.height);
+			return (pixel.x >= 0 && pixel.x < textureSize.x && pixel.y >= 0 && pixel.y < textureSize.y);
 		}
 
 		bool isPixelColorEqual(Vector2Int pixel1, Vector2Int pixel2) {
@@ -406,8 +545,7 @@ public class BiomeGenerator : MonoBehaviour
 			for (int x = 0; x < textureSize.x; x++) {
 				Color firstColor = firstTexture.GetPixel(x,y);
 				Color secondColor = secondTexture.GetPixel(x,y);
-				Color mergedColor = mergeColors(firstColor, secondColor, 0.5f);
-				pixelColors[index] = addToSaturation(mergedColor, 0.5f);
+				pixelColors[index] = mergeColors(firstColor, secondColor, 0.5f);
 				index++;
 			}
 		}
@@ -437,15 +575,15 @@ public class BiomeGenerator : MonoBehaviour
 	}
 
 	public Texture2D getBiomeTexture() {
-		return BiomeMap.sprite.texture;
+		return biomeTexture;
 	}
 
 	public Texture2D getTempTexture() {
-		return TempMap.sprite.texture;
+		return tempSprite.GetComponent<SpriteRenderer>().sprite.texture;
 	}
 
 	public Texture2D getPrecTexture() {
-		return PrecMap.sprite.texture;
+		return precSprite.GetComponent<SpriteRenderer>().sprite.texture;
 	}
 
 	public bool isBiomeTextureGenerated() {
@@ -456,9 +594,23 @@ public class BiomeGenerator : MonoBehaviour
 		return Color.Lerp(color1, color2, Mathf.Clamp(mergeProportions, 0f, 1f));
 	}
 
-	public Color addToSaturation(Color color, float satAddition) {
+	public Color addSaturation(Color oldColor, float satAddition) {
 		Vector3 hsvColor = new Vector3(0,0,0);
-		Color.RGBToHSV(color, out hsvColor.x, out hsvColor.y, out hsvColor.z);
+		Color.RGBToHSV(oldColor, out hsvColor.x, out hsvColor.y, out hsvColor.z);
 		return Color.HSVToRGB(hsvColor.x, Mathf.Min(hsvColor.y+satAddition, 1f), hsvColor.z);
+	}
+
+	public Texture2D addSaturationToTexture(Texture2D texture, float satAddition) {
+		for(int y = 0; y < textureSize.y; y++) {
+			for(int x = 0; x < textureSize.x; x++) {
+				texture.SetPixel(x,y,addSaturation(texture.GetPixel(x,y),0.5f));
+			}
+		}
+		texture.Apply();
+		return texture;
+	}
+
+	private Sprite buildSprite(Texture2D texture) {
+		return Sprite.Create(texture, new Rect(0, 0, textureSize.x, textureSize.y), Vector2.one * 0.5f);
 	}
 }
