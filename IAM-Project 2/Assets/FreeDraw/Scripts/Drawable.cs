@@ -314,7 +314,7 @@ namespace FreeDraw
 
 
         
-        void init()
+        public void init()
         {
             drawable = this;
             // DEFAULT BRUSH SET HERE
