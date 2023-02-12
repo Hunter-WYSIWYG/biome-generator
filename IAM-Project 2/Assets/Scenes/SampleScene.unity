@@ -768,8 +768,9 @@ MonoBehaviour:
   minkowskiLambda: 3
   coldHeightsPercent: 0.7
   eliminationSizeFactor: 0.005
-  eliminateSmallRegions: 0
-  openBiomeSprite: 0
+  biome_eliminateSmallRegions: 0
+  biome_openSprite: 0
+  biome_mergeTempAndPrec: 0
   wizardState: 0
   terrainGenerator: {fileID: 1384851840}
   tempSprite: {fileID: 936016212}

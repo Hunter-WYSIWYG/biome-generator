@@ -372,4 +372,8 @@ public class TerrainGenerator : MonoBehaviour
     public bool isMeshGenerated() {
         return meshGenerated;
     }
+
+    public float getRelativeWaterHeight() {
+        return relativeWaterHeight;
+    }
 }

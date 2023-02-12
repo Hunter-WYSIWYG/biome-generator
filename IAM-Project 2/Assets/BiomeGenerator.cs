@@ -22,9 +22,11 @@ public class BiomeGenerator : MonoBehaviour
 	//upper x percent of terrain that have a colder temperature
 	[Range(0f,1f)]
 	public float coldHeightsPercent = 0f;
-	//eliminate regions that have a smaller size than width*height*eliminationSizeFactor
-	[Range(0f,0.1f)]
+	//maximum distance in mesh-nodes from waters that is still affected by higher humidity
+	public int waterArea = 0;
 	[Header("Sprite Processing")]
+	[Range(0f,1f)]
+	//eliminate regions that have a smaller size than width*height*eliminationSizeFactor
 	public float eliminationSizeFactor = 0.001f;
 	public bool biome_eliminateSmallRegions = false;
 	public bool biome_openSprite = false;
@@ -105,6 +107,7 @@ public class BiomeGenerator : MonoBehaviour
 				tempSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(tempTexture);
 
 				precIntensityArray = calculateVoronoiDiagram(false);
+				precIntensityArray = addWaterHumidity(precIntensityArray);
 				precTexture = GetTextureFromIntensityArray(precIntensityArray, precColors);
 				precSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(precTexture);
 
@@ -267,7 +270,6 @@ public class BiomeGenerator : MonoBehaviour
 		}
 	}
 
-	//WIP rainshadows for mountains: give direction (e.g. 180°) + height border (float) (maybe same as coldheights?) -> more rain north of mountain + less rain south of mountain
 	int[] addMountainTemperatures(int[] intensityArray) {
 		Vector3[] terrainVertices = terrainGenerator.getTerrainVertices();
 		float maxHeight = terrainGenerator.getMaxTerrainheight();
@@ -290,9 +292,79 @@ public class BiomeGenerator : MonoBehaviour
 		return intensityArray;
 	}
 
+	int[] addWaterHumidity(int[] intensityArray) {
+		Vector3[] terrainVertices = terrainGenerator.getTerrainVertices();
+		float maxHeight = terrainGenerator.getMaxTerrainheight();
+		float minHeight = terrainGenerator.getMinTerrainheight();
+		Vector2Int meshSize = terrainGenerator.getMeshSize();
+		float relativeWaterHeight = terrainGenerator.getRelativeWaterHeight();
+
+		float waterLevel = minHeight + ((maxHeight - minHeight) * relativeWaterHeight);
+
+		//determine all mesh-nodes under water
+		bool[] isWaterNode = new bool[terrainVertices.Length];
+		for(int meshY = 0; meshY < meshSize.y; meshY++) {
+			for(int meshX = 0; meshX < meshSize.x; meshX++) {
+				int meshIndex = meshX + meshY * meshSize.x;
+				if(meshX < textureSize.x && meshY < textureSize.y && terrainVertices[meshIndex].y < waterLevel) {
+					isWaterNode[meshIndex] = true;
+				} else {
+					isWaterNode[meshIndex] = false;
+				}
+			}
+		}
+
+		//determine mesh-nodes in area around water
+		//dilate water formations waterArea-Times
+		for(int i = 0; i < waterArea; i++) {
+			isWaterNode = dilateWaterNodes(isWaterNode);
+		}
+
+		//add intensity values
+		for(int meshY = 0; meshY < meshSize.y; meshY++) {
+			for(int meshX = 0; meshX < meshSize.x; meshX++) {
+				int meshIndex = meshX + meshY * meshSize.x;
+				if(isWaterNode[meshIndex]) {
+					int textureX = meshIndex % meshSize.x;
+					int textureY = Mathf.FloorToInt(meshIndex / meshSize.x);
+					int textureIndex = textureX + textureY * textureSize.x;
+					intensityArray[textureIndex] = Mathf.Min(intensityArray[textureIndex] + 1, 2);
+				}
+			}
+		}
+		return intensityArray;
+
+		bool[] dilateWaterNodes(bool[] waterNodes) {
+			bool[] resultArray = (bool[])waterNodes.Clone();
+
+			for(int meshY = 0; meshY < meshSize.y; meshY++) {
+				for(int meshX = 0; meshX < meshSize.x; meshX++) {
+					int meshIndex = meshX + meshY * meshSize.x;
+					int meshIndexUp = meshX + (meshY+1) * meshSize.x;
+					int meshIndexRight = (meshX+1) + meshY * meshSize.x;
+					int meshIndexDown = meshX + (meshY-1) * meshSize.x;
+					int meshIndexLeft = (meshX-1) + meshY * meshSize.x;
+					if(!waterNodes[meshIndex]) {
+						if(meshX-1 > 1 && waterNodes[meshIndexLeft]) {
+							resultArray[meshIndex] = true;
+						} else if(meshX+1 < textureSize.x-1 && waterNodes[meshIndexRight]) {
+							resultArray[meshIndex] = true;
+						} else if(meshY-1 > 1 && waterNodes[meshIndexDown]) {
+							resultArray[meshIndex] = true;
+						} else if(meshY+1 < textureSize.y-1 && waterNodes[meshIndexUp]) {
+							resultArray[meshIndex] = true;
+						}
+					}
+				}
+			}
+			return resultArray;
+		}
+	}
+
 	private Texture2D EliminateSmallRegions(Texture2D texture, float eliminationSizeFactor) {
 		Dictionary<Vector2Int, int> pixelRegions = new Dictionary<Vector2Int, int>();
 		
+		//breath first search -> save sizes of all regions
 		int regionCount = 0;
 		Dictionary<int, int> regionSizes = new Dictionary<int, int>(); //regionID, regionSize
 		for(int x = 0; x < textureSize.x; x++) {
@@ -320,6 +392,7 @@ public class BiomeGenerator : MonoBehaviour
 			}
 		}
 
+		//find biggest and second biggest region of all regions
 		Vector2Int biggestRegion = new Vector2Int(-1,0); //regionID, regionSize
 		Vector2Int secondBiggestRegion = new Vector2Int(-1,0); //regionID, regionSize
 		foreach(KeyValuePair<int, int> regionSize in regionSizes) {
@@ -332,8 +405,13 @@ public class BiomeGenerator : MonoBehaviour
 				secondBiggestRegion.y = regionSize.Value;
 			}
 		}
+
+		//detemine minimum size for regions to not get eliminated
+		//always let at least the biggest 2 regions exist
 		int secondBiggestRegionSize = secondBiggestRegion.y;
 		int minRegionSize = Mathf.Min(Mathf.RoundToInt(textureSize.x * textureSize.y * eliminationSizeFactor),secondBiggestRegionSize);
+
+		//list which regions should be eliminated by ID
 		List<int> regionsToEliminate = new List<int>();
 		for(int i = 0; i < regionSizes.Count; i++) {
 			if(regionSizes[i] < minRegionSize) {
@@ -341,6 +419,7 @@ public class BiomeGenerator : MonoBehaviour
 			}
 		}
 
+		//eliminate chosen regions by recoloring them
 		Color[] resultColorArray = new Color [textureSize.x * textureSize.y];
 		for(int y = 0; y < textureSize.y; y++) {
 			for(int x = 0; x < textureSize.x; x++) {
@@ -418,7 +497,9 @@ public class BiomeGenerator : MonoBehaviour
 	}
 
 	//areaSize: radius of area around a pixel to check for local minimum
-	List<Vector2Int> findLocalMinima(Vector3[] meshVertices, int areaSize) {
+	List<Vector2Int> findLocalMinima(Vector3[] meshVertices, int searchArea) {
+
+		//check for every pixel if it is a local minimum for the chosen area around it
 		List<Vector2Int> minimaList = new List<Vector2Int>();
 		for(int meshY = 1; meshY < textureSize.y-1; meshY++) {
 			for(int meshX = 1; meshX < textureSize.x-1; meshX++) {
@@ -429,10 +510,11 @@ public class BiomeGenerator : MonoBehaviour
 		}
 		return minimaList;
 
+		//check if there are vertices with lower high in the chosen area around
 		bool isLocalMinimum(int x, int y) {
 			bool isLocalMinimum = true;
-			for(int offsetX = -areaSize; offsetX <= areaSize; offsetX++) {
-				for(int offsetY = -areaSize; offsetY <= areaSize; offsetY++) {
+			for(int offsetX = -searchArea; offsetX <= searchArea; offsetX++) {
+				for(int offsetY = -searchArea; offsetY <= searchArea; offsetY++) {
 					isLocalMinimum = isLocalMinimum && !isPixelLower(x + offsetX, y + offsetY, x, y);
 					if(!isLocalMinimum) {
 						return false;
@@ -442,6 +524,7 @@ public class BiomeGenerator : MonoBehaviour
 			return isLocalMinimum;
 		}
 
+		//true if: pixel is in texture & pixelHeight is smaller than currentPixelHeight
 		bool isPixelLower(int x, int y, int currX, int currY) {
 			return isPixelInTexture(new Vector2Int(x, y)) && meshVertices[meshIndex(x, y)].y < meshVertices[meshIndex(currX, currY)].y;
 		}
@@ -525,39 +608,32 @@ public class BiomeGenerator : MonoBehaviour
 	}
 
 	private int rollIntensityID(bool calcTempDiagram, int lowestIntensityID, int highestIntensityID) {
-		float probabilityFactor;
+		float weightFactor;
 		if(calcTempDiagram) {
-			probabilityFactor = averageTemp;
+			weightFactor = averageTemp;
 		} else {
-			probabilityFactor = averagePrec;
+			weightFactor = averagePrec;
 		}
-		float dieValue;
-		int intensityIDRange = highestIntensityID - lowestIntensityID;
 		int intensityID;
-		if(intensityIDRange == 3) {
-			//there are 3 possible color IDs
-			//calculate probabilities from probabilityFactor with quadratic functions
-			float lowProbability = 2/3 * Mathf.Pow(probabilityFactor,2) - 5/3 * probabilityFactor + 1;
-			float highProbability = 2/3 * Mathf.Pow(probabilityFactor,2) + 1/3 * probabilityFactor;
-			dieValue = Random.Range(0f, 1f);
-			if(dieValue < lowProbability)
+		float dieValue = Random.Range(0f, 1f);
+		//there are 3 possible color IDs
+		if((highestIntensityID - lowestIntensityID) == 3) {
+			if(dieValue < 1-weightFactor) {
 				intensityID = 0;
-			else if(dieValue >= lowProbability && dieValue <= highProbability)
-				intensityID = 1;
-			else
+			} else {
 				intensityID = 2;
+			}
 		} else {
 			//there are 2 possible color IDs
-			dieValue = Random.Range(0f, 1f);
 			if(lowestIntensityID == 0) {
 				//possible color IDs are 0 and 1
-				if(dieValue < 1-probabilityFactor)
+				if(dieValue < 1-weightFactor)
 					intensityID = 0;
 				else
 					intensityID = 1;
 			} else {
 				//possible color IDs are 1 and 2
-				if(dieValue < 1-probabilityFactor)
+				if(dieValue < 1-weightFactor)
 					intensityID = 1;
 				else
 					intensityID = 2;
@@ -565,19 +641,15 @@ public class BiomeGenerator : MonoBehaviour
 		}
 		return intensityID;
 	}
-	int GetClosestCentroidIndex(Vector2Int pixelPos, Vector2Int[] centroids, bool calcTempDiagram)
-	{
+	int GetClosestCentroidIndex(Vector2Int pixelPos, Vector2Int[] centroids, bool calcTempDiagram) {
 		float smallestDst = float.MaxValue;
 		int nearestRegionID = 0;
 		int secondNearestRegionID = 0;
 
 		//find nearest region id
-		for(int i = 0; i < centroids.Length; i++)
-		{
-			//float distance = (Vector2.Distance(pixelPos, centroids[i]));
+		for(int i = 0; i < centroids.Length; i++) {
 			float distance = calcMinkowskiDistance(pixelPos, centroids[i], minkowskiLambda);
-			if (distance < smallestDst)
-			{
+			if (distance < smallestDst) {
 				nearestRegionID = i;
 				smallestDst = distance;
 			}
