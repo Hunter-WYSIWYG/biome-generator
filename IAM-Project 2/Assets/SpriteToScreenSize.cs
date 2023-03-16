@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpriteToScreenSize : MonoBehaviour
 {
     public BiomeGenerator biomeGenerator;
-    private bool resizeToScreenSize = false;
     private float spriteWidth;
     private float spriteHeight;
     private int screenWidth_px = Screen.width;
@@ -17,28 +16,10 @@ public class SpriteToScreenSize : MonoBehaviour
     private BoxCollider2D boxCollider;
     private bool spriteResized = false;
 
-    void Start() {
-        resizeToScreenSize = true;
-    }
+    public void resize() {
+        screenWidth_px = Screen.width;
+        screenHeight_px = Screen.height;
 
-    void Update()
-    {
-        if(biomeGenerator.isBiomeTextureGenerated()) {
-            if (screenWidth_px != Screen.width || screenHeight_px != Screen.height || resizeToScreenSize) {
-                screenWidth_px = Screen.width;
-                screenHeight_px = Screen.height;
-                resizeToScreenSize = false;
-                resize();
-                spriteResized = true;
-            }
-        }
-
-        if(biomeGenerator.generateNewMap) {
-            resizeToScreenSize = true;
-        }
-    }
-
-    void resize() {
         gameObject.transform.localScale = new Vector3(1, 1, 1);
         topRightScreenCorner = Camera.main.ScreenToWorldPoint(new Vector3 (screenWidth_px, screenHeight_px, Camera.main.transform.position.z));
         screenWidth = topRightScreenCorner.x * 2;
@@ -62,6 +43,8 @@ public class SpriteToScreenSize : MonoBehaviour
         Vector2 spriteSize = gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size;
         gameObject.GetComponent<BoxCollider2D>().size = spriteSize;
         gameObject.GetComponent<BoxCollider2D>().offset = new Vector2 (0, 0);
+
+        spriteResized = true;
     }
 
     public float getScaleFactor() {

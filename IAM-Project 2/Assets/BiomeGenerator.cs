@@ -21,9 +21,9 @@ public class BiomeGenerator : MonoBehaviour
 	public float minkowskiLambda = 3f;
 	//upper x percent of terrain that have a colder temperature
 	[Range(0f,1f)]
-	public float coldHeightsPercent = 0f;
-	//maximum distance in mesh-nodes from waters that is still affected by higher humidity
-	public int waterArea = 0;
+	public float realitveColdHeightsLimit = 0f;
+	//maximum distance in mesh-nodes around waters that is still affected by higher humidity
+	public int humiditySpread = 0;
 	[Header("Sprite Processing")]
 	[Range(0f,1f)]
 	//eliminate regions that have a smaller size than width*height*eliminationSizeFactor
@@ -41,6 +41,9 @@ public class BiomeGenerator : MonoBehaviour
 	public GameObject biomeSprite;
 	public GameObject spriteCam;
 	public GameObject terrainCam;
+	public SpriteToScreenSize biomeMapView;
+	public SpriteToScreenSize tempMapView;
+	public SpriteToScreenSize precMapView;
 
 	private int[] tempIntensityArray;
 	private int[] precIntensityArray;
@@ -79,9 +82,7 @@ public class BiomeGenerator : MonoBehaviour
 		if(generateNewMap && terrainGenerator.isMeshGenerated()) {
 			textureSize = terrainGenerator.getMeshSize();
 			generateNewMap = false;
-
 			localMinima = findLocalMinima(terrainGenerator.getTerrainVertices(), localMinimumArea);
-
 			if(textureSize.x * textureSize.y > 0) {
 				int centroidCount;
 				if(useMinimaForCentroids) {
@@ -100,6 +101,7 @@ public class BiomeGenerator : MonoBehaviour
 					precRegionNeighbors[i] = new List<int>();
 				}
 
+
 				//generate/set intensityArrays, textures, sprites
 				tempIntensityArray = calculateVoronoiDiagram(true);
 				tempIntensityArray = addMountainTemperatures(tempIntensityArray);
@@ -108,12 +110,17 @@ public class BiomeGenerator : MonoBehaviour
 
 				precIntensityArray = calculateVoronoiDiagram(false);
 				precIntensityArray = addWaterHumidity(precIntensityArray);
+				
 				precTexture = GetTextureFromIntensityArray(precIntensityArray, precColors);
 				precSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(precTexture);
 
 				biomeTexture = addSaturationToTexture(MergeTextures(tempTexture, precTexture), 0.5f);
 				biomeSprite.GetComponent<SpriteRenderer>().sprite = buildSprite(biomeTexture);
 				biomeGenerationFinished = true;
+
+				biomeMapView.resize();
+				tempMapView.resize();
+				precMapView.resize();
 			} else {
 				Debug.Log("Texture size too small");
 			}
@@ -176,12 +183,8 @@ public class BiomeGenerator : MonoBehaviour
 			}
 		}
 		
-		List<Color> tmp = new List<Color>();
 		for(int y = 0; y < textureSize.y; y++) {
 			for(int x = 0; x < textureSize.x; x++) {
-				if(!tmp.Contains(texture.GetPixel(x,y))) {
-					tmp.Add(texture.GetPixel(x,y));
-				}
 				if(texture.GetPixel(x,y) == erosionColor) {
 					if(x-1 >= 0 && texture.GetPixel(x-1,y) != erosionColor) {
 						resultTexture.SetPixel(x,y,texture.GetPixel(x-1,y));
@@ -267,6 +270,9 @@ public class BiomeGenerator : MonoBehaviour
 					biomeSprite.SetActive(false);
 					break;
 			}
+			biomeMapView.resize();
+			tempMapView.resize();
+			precMapView.resize();
 		}
 	}
 
@@ -276,12 +282,12 @@ public class BiomeGenerator : MonoBehaviour
 		float minHeight = terrainGenerator.getMinTerrainheight();
 		Vector2Int meshSize = terrainGenerator.getMeshSize();
 
-		float coldHeightsBorder = maxHeight - ((maxHeight - minHeight) * coldHeightsPercent);
+		float coldHeightsLimit = maxHeight - ((maxHeight - minHeight) * realitveColdHeightsLimit);
 
 		for(int meshY = 0; meshY < meshSize.y; meshY++) {
 			for(int meshX = 0; meshX < meshSize.x; meshX++) {
 				int meshIndex = meshX + meshY * meshSize.x;
-				if(meshX < textureSize.x && meshY < textureSize.y && terrainVertices[meshIndex].y > coldHeightsBorder) {
+				if(meshX < textureSize.x && meshY < textureSize.y && terrainVertices[meshIndex].y > coldHeightsLimit) {
 					int textureX = meshIndex % meshSize.x;
 					int textureY = Mathf.FloorToInt(meshIndex / meshSize.x);
 					int textureIndex = textureX + textureY * textureSize.x;
@@ -315,8 +321,8 @@ public class BiomeGenerator : MonoBehaviour
 		}
 
 		//determine mesh-nodes in area around water
-		//dilate water formations waterArea-Times
-		for(int i = 0; i < waterArea; i++) {
+		//dilate water formations humiditySpread-Times
+		for(int i = 0; i < humiditySpread; i++) {
 			isWaterNode = dilateWaterNodes(isWaterNode);
 		}
 
@@ -496,6 +502,10 @@ public class BiomeGenerator : MonoBehaviour
 		return (pixel.x >= 0 && pixel.x < textureSize.x && pixel.y >= 0 && pixel.y < textureSize.y);
 	}
 
+	bool isPixelInTerrain(Vector2Int pixel) {
+		return (pixel.x >= 1 && pixel.x < textureSize.x-1 && pixel.y >= 1 && pixel.y < textureSize.y-1);
+	}
+
 	//areaSize: radius of area around a pixel to check for local minimum
 	List<Vector2Int> findLocalMinima(Vector3[] meshVertices, int searchArea) {
 
@@ -515,7 +525,7 @@ public class BiomeGenerator : MonoBehaviour
 			bool isLocalMinimum = true;
 			for(int offsetX = -searchArea; offsetX <= searchArea; offsetX++) {
 				for(int offsetY = -searchArea; offsetY <= searchArea; offsetY++) {
-					isLocalMinimum = isLocalMinimum && !isPixelLower(x + offsetX, y + offsetY, x, y);
+					isLocalMinimum = isLocalMinimum && !isOtherPixelLower(x + offsetX, y + offsetY, x, y);
 					if(!isLocalMinimum) {
 						return false;
 					}
@@ -525,8 +535,8 @@ public class BiomeGenerator : MonoBehaviour
 		}
 
 		//true if: pixel is in texture & pixelHeight is smaller than currentPixelHeight
-		bool isPixelLower(int x, int y, int currX, int currY) {
-			return isPixelInTexture(new Vector2Int(x, y)) && meshVertices[meshIndex(x, y)].y < meshVertices[meshIndex(currX, currY)].y;
+		bool isOtherPixelLower(int x, int y, int currX, int currY) {
+			return isPixelInTerrain(new Vector2Int(x, y)) && meshVertices[meshIndex(x, y)].y < meshVertices[meshIndex(currX, currY)].y;
 		}
 
 		int meshIndex(int x, int y) {

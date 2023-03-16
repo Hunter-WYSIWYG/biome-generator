@@ -758,15 +758,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e851e8397d02e4c45a2e55f464de681a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateNewMap: 1
-  localMinimumArea: 10
+  generateNewMap: 0
+  localMinimumArea: 24
   useMinimaForCentroids: 1
   showLocalMinima: 1
   regionAmount: 20
   averageTemp: 0.5
   averagePrec: 0.5
   minkowskiLambda: 3
-  coldHeightsPercent: 0.7
+  realitveColdHeightsLimit: 0.7
+  humiditySpread: 5
   eliminationSizeFactor: 0.005
   biome_eliminateSmallRegions: 0
   biome_openSprite: 0
@@ -778,6 +779,9 @@ MonoBehaviour:
   biomeSprite: {fileID: 1118195182}
   spriteCam: {fileID: 294460712}
   terrainCam: {fileID: 963194225}
+  biomeMapView: {fileID: 1118195186}
+  tempMapView: {fileID: 936016216}
+  precMapView: {fileID: 1579631141}
 --- !u!4 &1180033443
 Transform:
   m_ObjectHideFlags: 0
